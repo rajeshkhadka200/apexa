@@ -1,0 +1,27 @@
+.foot_con > * {
+  color: #fff;
+}
+
+.foot_con {
+  height: 80px;
+  width: 100%;
+  background: rgba(48, 48, 48, 0.2);
+  border: 1px solid var(--grayish);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > *:first-child,
+  & > *:last-child {
+    margin: 0 30px;
+  }
+}
+
+.left_side span {
+  color: #ffffff7f;
+}
+
+.outLinks {
+  color: #ffffff7f;
+  text-decoration: underline;
+}
