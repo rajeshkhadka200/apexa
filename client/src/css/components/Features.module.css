@@ -24,11 +24,11 @@
   align-items: center;
   width: 40px;
   height: 40px;
-  background: linear-gradient(
+  /* background: linear-gradient(
     60deg,
     var(--gradient-color-1),
     var(--gradient-color-2)
-  );
+  ); */
   border-radius: 3px;
 }
 .f_icon{
@@ -42,13 +42,13 @@
     font-size: 2.5rem;
     font-weight: 600;
     color: var(--white);
-    background: linear-gradient(
+    /* background: linear-gradient(
     60deg,
     var(--gradient-color-1),
     var(--gradient-color-2)
     );
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent; */
 }
 .f_des{
     color: var(--gray-text);

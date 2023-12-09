@@ -9,7 +9,7 @@ const NavFoot = () => {
     <>
       <Navbar />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

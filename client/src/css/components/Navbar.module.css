@@ -6,6 +6,7 @@
 }
 .navbar_wrapper {
   display: flex;
+
   justify-content: space-between;
   padding: 10px 15px;
   width: 70%;
@@ -66,7 +67,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 400;
+  font-weight: 400;
   cursor: pointer;
   transition: 0.2s;
 }

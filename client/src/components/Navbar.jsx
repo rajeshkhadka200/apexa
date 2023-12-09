@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 import { HiPaperAirplane } from "react-icons/hi";
-import style from "../css/components/Navbar.module.css"
+import style from "../css/components/Navbar.module.css";
 
 const Navbar = () => {
   return (
@@ -28,6 +28,6 @@ const Navbar = () => {
       </div>
     </>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
