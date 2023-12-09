@@ -25,7 +25,7 @@
   -webkit-text-fill-color: transparent;
 }
 .heroContainer p {
-  margin: 30px 0;
+  margin: 35px 0;
   text-align: center;
   width: 600px;
   color: #90959f;
@@ -62,7 +62,7 @@
     )
     1;
 }
-@media screen and (max-width: 1100px) {
+/* @media screen and (max-width: 1100px) {
   .heroContainer {
     width: 80%;
   }
@@ -72,4 +72,4 @@
   .heroContainer {
     width: 90%;
   }
-}
+} */
