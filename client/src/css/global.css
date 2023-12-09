@@ -3,9 +3,7 @@
   border-width: 0;
   border-style: solid;
   border-color: rgb(243, 244, 246);
-  background-color: var(--bg);
 }
-
 :root {
   --grayish: #2d2d2d52;
   --bg: #050505;
@@ -24,7 +22,7 @@
   --white: #f5f5f5;
   --text: #f5f5f5;
   --gray-text: #81858f;
-  --border-active:#4C526F
+  --border-active: #4c526f;
 }
 
 html,
