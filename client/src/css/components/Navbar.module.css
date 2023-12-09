@@ -1,0 +1,92 @@
+.navbar_container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.navbar_wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  width: 70%;
+  height: 65px;
+  margin-top: 20px;
+  background: rgba(48, 48, 48, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(38, 38, 38, 0.1);
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(5px);
+  border: 2px solid var(--grayish);
+}
+.navbar_logo {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  flex-direction: row;
+}
+.navbar_icon {
+  font-size: 2rem;
+}
+.navbar_title {
+  font-size: 1.5rem;
+  color: var(--text);
+  font-family: "Lobster", sans-serif;
+  font-weight: 500;
+  -webkit-mask-image: linear-gradient(
+    -75deg,
+    rgba(0, 0, 0, 0.6) 30%,
+    #171717 50%,
+    rgba(0, 0, 0, 0.6) 70%
+  );
+  -webkit-mask-size: 200%;
+  animation: shine 2s linear infinite;
+  position: relative;
+}
+
+@keyframes shine {
+  from {
+    -webkit-mask-position: 150%;
+  }
+  to {
+    -webkit-mask-position: -50%;
+  }
+}
+
+.btn_wrapper {
+  display: flex;
+  gap: 15px;
+  padding-inline: 10px;
+  align-items: center;
+}
+.btn2 {
+  height: 37px;
+  width: 90px;
+  border-radius: 7px;
+  background-color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 400;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn1 {
+  height: 37px;
+  width: 90px;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 400;
+  cursor: pointer;
+  color: var(--text);
+  transition: 0.2s;
+}
+
+.btn1:hover {
+  background-color: var(--grayish);
+  color: var(--white);
+}
+.btn2:hover {
+  outline: 2px solid var(--gray-text);
+}
