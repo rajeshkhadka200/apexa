@@ -1,10 +1,12 @@
-import React from 'react'
+import React from "react";
+import Features from "../components/Features";
 
 const Hero = () => {
   return (
-    <div>
-    </div>
+    <>
+      <Features />
+    </>
   );
-}
+};
 
-export default Hero
+export default Hero;
