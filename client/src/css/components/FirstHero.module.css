@@ -1,0 +1,75 @@
+.heroContainer > * {
+  color: #fff;
+}
+.heroContainer {
+  width: 70%;
+  height: calc(100vh - 85px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.heroContainer h2 {
+  font-size: 72px;
+  text-align: center;
+  font-weight: 700;
+}
+.heroContainer h2 span {
+  background: linear-gradient(
+    90deg,
+    var(--gradient-color-1),
+    var(--gradient-color-2)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.heroContainer p {
+  margin: 30px 0;
+  text-align: center;
+  width: 600px;
+  color: #90959f;
+  font-size: 20px;
+}
+
+.btnCon {
+  display: flex;
+  gap: 20px;
+  font-size: 18px;
+}
+.btnCon button {
+  height: 50px;
+  width: 150px;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnCon .btn_github {
+  background: #fff;
+  color: #000000;
+  font-weight: 400;
+}
+.btnCon .btn_join {
+  border-radius: 7px !important;
+  background-color: #101010;
+  border: 2px solid transparent;
+  border-image: linear-gradient(
+      to bottom,
+      var(--gradient-color-1),
+      var(--gradient-color-2)
+    )
+    1;
+}
+@media screen and (max-width: 1100px) {
+  .heroContainer {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .heroContainer {
+    width: 90%;
+  }
+}

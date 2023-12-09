@@ -63,4 +63,6 @@ button {
   -webkit-appearance: button;
   text-transform: none;
   cursor: pointer;
+  border: 0;
+  outline: 0;
 }
