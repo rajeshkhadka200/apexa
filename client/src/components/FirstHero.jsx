@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../css/components/FirstHero.module.css";
+import { BsArrowRight } from "react-icons/bs";
 
 const FirstHero = () => {
   return (
@@ -17,7 +18,9 @@ const FirstHero = () => {
             <button className={styles.btn_github}>GitHub</button>
           </a>
           <button className={styles.btn_join}>
-            <p className={styles.join_text}>Join</p>
+            <p className={styles.join_text}>
+              Join <BsArrowRight className={styles.right_icon} size={25}/>
+            </p>
           </button>
         </div>
       </div>
