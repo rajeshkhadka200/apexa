@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { HiPaperAirplane } from "react-icons/hi";
 import style from "../css/components/Navbar.module.css";
 

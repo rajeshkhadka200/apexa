@@ -8,11 +8,19 @@ const Footer = () => {
       </div>
       <div className={styles.middle}>
         Thanks to{" "}
-        <a className={styles.outLinks} href="https://mindsdb.com/">
+        <a
+          className={styles.outLinks}
+          target="_blank"
+          href="https://mindsdb.com/"
+        >
           mindsDb{" "}
         </a>{" "}
         and
-        <a className={styles.outLinks} href="https://hashnode.com/">
+        <a
+          className={styles.outLinks}
+          target="_blank"
+          href="https://hashnode.com/"
+        >
           {" "}
           Hashnode
         </a>
@@ -21,6 +29,7 @@ const Footer = () => {
         Made with 💖 by{" "}
         <a
           className={styles.outLinks}
+          target="_blank"
           href="https://github.com/rajeshkhadka200"
         >
           Rajesh{" "}
@@ -28,6 +37,7 @@ const Footer = () => {
         and{" "}
         <a
           className={styles.outLinks}
+          target="_blank"
           href="https://github.com/utsavbhattarai007"
         >
           Utsav

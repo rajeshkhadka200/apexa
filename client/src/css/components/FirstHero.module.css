@@ -11,7 +11,7 @@
   flex-direction: column;
 }
 .heroContainer h2 {
-  font-size: 72px;
+  font-size: 55px;
   text-align: center;
   font-weight: 700;
 }
@@ -28,7 +28,7 @@
   margin: 35px 0;
   text-align: center;
   width: 600px;
-  color: #90959f;
+  color: var(--gray-text);
   font-size: 20px;
 }
 
@@ -53,14 +53,15 @@
   color: #000000;
   font-weight: 400;
 }
-
+.btnCon .btn_github:hover {
+  outline: 4px solid var(--grayish);
+}
 .btnCon .btn_join {
   background-color: #101010;
   border: double 2px transparent;
   background-image: linear-gradient(var(--bg), var(--bg)),
     linear-gradient(to right, var(--gradient-color-1), var(--gradient-color-2));
 }
-
 
 @media screen and (max-width: 1100px) {
   .heroContainer {

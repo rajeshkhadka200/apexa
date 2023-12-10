@@ -13,7 +13,9 @@ const FirstHero = () => {
           the frontend. Starting with React & Next.js.
         </p>
         <div className={styles.btnCon}>
-          <button className={styles.btn_github}>GitHub</button>
+          <a target="_blank" href="https://github.com/rajeshkhadka200/apexa">
+            <button className={styles.btn_github}>GitHub</button>
+          </a>
           <button className={styles.btn_join}>
             <p className={styles.join_text}>Join</p>
           </button>
