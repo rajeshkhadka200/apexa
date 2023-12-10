@@ -29,7 +29,7 @@ const FeatureCard = ({ icon, tag, des, img, c1, c2 }) => {
                 {tag}
               </h3>
               <TypeAnimation
-                sequence={["dolor sit ametdh."]}
+                sequence={["dolor sit amtdh.", 1000, "dolor sit ametdh."]}
                 wrapper="span"
                 speed={50}
                 style={{
@@ -38,6 +38,7 @@ const FeatureCard = ({ icon, tag, des, img, c1, c2 }) => {
                   fontWeight: "600",
                   color: "#fff",
                 }}
+                repeat={Infinity}
               />
             </div>
             <div className={style.f_des}>

@@ -52,6 +52,10 @@
   background: #fff;
   color: #000000;
   font-weight: 400;
+  transition: 0.2s;
+}
+.btn_github:hover {
+  outline: 2px solid var(--gray-text);
 }
 
 .btnCon .btn_join {
@@ -59,8 +63,60 @@
   border: double 2px transparent;
   background-image: linear-gradient(var(--bg), var(--bg)),
     linear-gradient(to right, var(--gradient-color-1), var(--gradient-color-2));
+  transform-style: preserve-3d;
+}
+.join_text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.right_icon {
+  display: none;
 }
 
+.btn_join:hover .right_icon {
+  display: block;
+}
+
+.btn_join::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translate3d(0, 0, -1px);
+  background: conic-gradient(
+    from 90deg at 40% -25%,
+    #ffd700,
+    #f79d03,
+    #ee6907,
+    #e6390a,
+    #de0d0d,
+    #d61039,
+    #cf1261,
+    #c71585,
+    #cf1261,
+    #d61039,
+    #de0d0d,
+    #ee6907,
+    #f79d03,
+    #ffd700,
+    #ffd700,
+    #ffd700
+  );
+  filter: blur(10px);
+  clip-path: polygon(
+    -100vmax -100vmax,
+    100vmax -100vmax,
+    100vmax 100vmax,
+    -100vmax 100vmax,
+    -100vmax -100vmax,
+    0 0,
+    0 100%,
+    100% 100%,
+    100% 0,
+    0 0
+  );
+}
 
 @media screen and (max-width: 1100px) {
   .heroContainer {
