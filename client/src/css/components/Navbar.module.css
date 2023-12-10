@@ -17,6 +17,8 @@
   backdrop-filter: saturate(180%) blur(10px);
   -webkit-backdrop-filter: saturate(180%) blur(5px);
   border: 2px solid var(--grayish);
+  position: fixed;
+  top: 0;
 }
 .navbar_logo {
   display: flex;

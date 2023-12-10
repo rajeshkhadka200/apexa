@@ -40,6 +40,7 @@ const Features = () => {
         return (
           <FeatureCard
             key={index}
+            i={index}
             icon={data.icon}
             tag={data.tag}
             des={data.des}
