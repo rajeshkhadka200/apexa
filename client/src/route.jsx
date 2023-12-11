@@ -1,8 +1,7 @@
 import { useRoutes } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
-import Hero from "./pages/Hero";
 import Nav from "./layouts/Nav";
 import NavFoot from "./layouts/NavFoot";
+import { Dashboard, Blog, Image, Seo, Hero } from "./pages";
 
 export default function Router() {
   return useRoutes([
@@ -14,7 +13,12 @@ export default function Router() {
     {
       path: "/app",
       element: <Nav />,
-      children: [{ path: "", element: <Dashboard /> }],
+      children: [
+        { path: "", element: <Dashboard /> },
+        { path: "blog", element: <Blog /> },
+        { path: "image", element: <Image /> },
+        { path: "seo", element: <Seo /> },
+      ],
     },
   ]);
 }
