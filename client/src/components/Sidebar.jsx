@@ -4,7 +4,6 @@ import { PiYoutubeLogoDuotone } from "react-icons/pi";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { TbPhotoScan } from "react-icons/tb";
 import { RiSeoFill } from "react-icons/ri";
-import Tooltip from "@mui/material/Tooltip";
 import Link from "./Link";
 const Sidebar = () => {
     const links = [
@@ -38,9 +37,7 @@ const Sidebar = () => {
       <div className={style.sidebar_con}>
         {links.map((link, index) => {
           return (
-            <Tooltip title={link.title} placement="right" arrow key={index}>
-              <Link to={link.to} icon={link.icon} style={style} c={link.c} />
-            </Tooltip>
+              <Link to={link.to} icon={link.icon} style={style} c={link.c} title={link.title} key={index}/>
           );
         })}
       </div>
