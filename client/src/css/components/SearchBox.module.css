@@ -1,0 +1,7 @@
+.search_con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--grayish);
+}

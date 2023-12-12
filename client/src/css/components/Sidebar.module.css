@@ -1,7 +1,7 @@
 .sidebar_con {
   position: fixed;
   top: 50%;
-  left: 3%;
+  left: 5%;
   transform: translate(-50%, -50%);
   width: 70px;
   height: fit-content;
