@@ -67,17 +67,15 @@ button {
   outline: 0;
 }
 
-
-
 /*Layout styling*/
-.layout_con{
+.layout_con {
   display: flex;
   min-height: 100vh;
   justify-content: center;
   align-items: center;
 }
 
-.layout{
+.layout {
   width: 70%;
   height: 450px;
   background: rgba(48, 48, 48, 0.2);

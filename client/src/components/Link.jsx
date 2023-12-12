@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip";
 
-const Link = ({ icon, to, style, c,title }) => {
+const Link = ({ icon, to, style, c, title }) => {
   const location = useLocation();
   const { pathname } = location;
   return (

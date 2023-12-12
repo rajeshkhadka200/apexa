@@ -1,9 +1,7 @@
-import React from 'react'
-
+import React from "react";
+import styles from "../css/components/Seo.module.css";
 const Seo = () => {
-  return (
-    <div>Seo</div>
-  )
-}
+  return <div>SEO</div>;
+};
 
-export default Seo
+export default Seo;
