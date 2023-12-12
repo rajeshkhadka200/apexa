@@ -67,24 +67,21 @@ button {
   outline: 0;
 }
 
-
-
 /*Layout styling*/
-.layout_con{
+.layout_con {
   display: flex;
   min-height: 100vh;
   justify-content: center;
   align-items: center;
 }
 
-.layout{
+.layout {
   width: 70%;
-  height: 400px;
+  height: 450px;
   background: rgba(48, 48, 48, 0.2);
   border-radius: 10px;
   box-shadow: 0 4px 30px rgba(38, 38, 38, 0.1);
   backdrop-filter: saturate(180%) blur(10px);
   -webkit-backdrop-filter: saturate(180%) blur(5px);
   border: 2px solid var(--grayish);
-
 }
