@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../css/components/Visualizer.module.css";
 import SearchBox from "./SearchBox";
 import { BiCommentDetail } from "react-icons/bi";
@@ -11,6 +11,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Tooltip from "@mui/material/Tooltip";
 import { Chart as ChartJS, ArcElement, Tooltip as Tip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import Modal from "@mui/material/Modal";
+import { TypeAnimation } from "react-type-animation";
+import Skeleton from "@mui/material/Skeleton";
 
 ChartJS.register(ArcElement, Tip, Legend);
 
@@ -25,8 +28,24 @@ const Visualizer = ({ search, onSearch, handleSearch, data }) => {
     user_name,
     like,
     comment,
-    color
+    color,
   } = data;
+
+  const [open, setOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
+
+  //test loading logic [P.S. This is just for testing and will be removed later]
+  useEffect(() => {
+    //set the loading to false after 5 seconds
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  }, [open]);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
 
   const NotifSwitch = styled((props) => (
     <Switch focusVisibleClassName=".Mui-focusVisible" {...props} />
@@ -43,8 +62,7 @@ const Visualizer = ({ search, onSearch, handleSearch, data }) => {
         transform: "translateX(16px)",
         color: "#fff",
         "& + .MuiSwitch-track": {
-          backgroundColor:
-            theme.palette.mode === "dark" ? "#2ECA45" : color,
+          backgroundColor: theme.palette.mode === "dark" ? "#2ECA45" : color,
           opacity: 1,
           border: 0,
         },
@@ -154,7 +172,7 @@ const Visualizer = ({ search, onSearch, handleSearch, data }) => {
                   placement="bottom"
                   arrow
                 >
-                  <div className={styles.summarize}>
+                  <div className={styles.summarize} onClick={handleOpen}>
                     <IconButton aria-label="summarize" size="small">
                       <PiMagicWandFill color={color} />
                     </IconButton>
@@ -238,6 +256,71 @@ const Visualizer = ({ search, onSearch, handleSearch, data }) => {
           </div>
         </div>
       </div>
+
+      {
+        //model
+      }
+      <Modal
+        disableAutoFocus={true}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="Summary Model"
+        aria-describedby="Show summary to the user"
+      >
+        <div className={styles.summary_con}>
+          <div className={styles.summary_title}>
+            Summary{" "}
+            <span className={styles.sub_text}>
+              {loading && "(Magic on the way... Just Wait)"}
+            </span>
+          </div>
+          {loading ? (
+            <>
+              <div className={styles.loading_con}>
+                <Skeleton
+                  variant="rectangular"
+                  width={400}
+                  height={20}
+                  sx={{ bgcolor: "#2d2c2d", borderRadius: "2px" }}
+                />
+                <Skeleton
+                  variant="rectangular"
+                  width={450}
+                  height={20}
+                  sx={{ bgcolor: "#2d2c2d", borderRadius: "2px" }}
+                />
+                <Skeleton
+                  variant="rectangular"
+                  width={500}
+                  height={20}
+                  sx={{ bgcolor: "#2d2c2d", borderRadius: "2px" }}
+                />
+                <Skeleton
+                  variant="rectangular"
+                  width={400}
+                  height={20}
+                  sx={{ bgcolor: "#2d2c2d", borderRadius: "2px" }}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <TypeAnimation
+                sequence={[
+                  "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid veniam magni, laborum, molestiae itaque necessitatibus reprehenderit non perferendis atque voluptatibus quia facere velit officiis maiores assumenda eaque quod repellendus voluptates.Ea minus corporis magnam nihil perferendis dolores, illo nesciunt distinctio vero? Numquam mollitia nihil quo dignissimos dolorum alias deleniti, modi quis accusamus. Sed optio exercitationem atque natus, error vitae excepturi",
+                ]}
+                wrapper="span"
+                speed={80}
+                style={{
+                  fontSize: "1rem",
+                  display: "inline-block",
+                  color: "#d2d2d2a6",
+                }}
+              />
+            </>
+          )}
+        </div>
+      </Modal>
     </>
   );
 };
