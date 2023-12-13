@@ -1,0 +1,16 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "This is the server side of Apexa AI",
+  "scripts": {
+    "start": "node --watch index.js"
+  },
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mindsdb-js-sdk": "^2.3.0",
+    "mongodb": "^6.3.0"
+  }
+}
