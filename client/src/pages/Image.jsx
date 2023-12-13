@@ -22,6 +22,25 @@ const Image = () => {
     }
   };
 
+  // copy to clipboard
+  const copyTittle = (e) => {
+    const el = document.createElement("textarea");
+    el.value = "Hello world";
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    alert("Copied to clipboard");
+  };
+  const copyDesc = (e) => {
+    const el = document.createElement("textarea");
+    el.value = "Hello world";
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    alert("Copied to clipboard");
+  };
   return (
     <>
       <div className={styles.container}>
@@ -79,7 +98,7 @@ const Image = () => {
           <div className={styles.header}>
             <h3>Image's Tittle</h3>
             <div className={styles.icon_con}>
-              <div className={styles.single_icn}>
+              <div onClick={copyTittle} className={styles.single_icn}>
                 <FaRegCopy size={15} color="#fff" />
               </div>
               <div className={styles.single_icn}>
@@ -97,7 +116,7 @@ const Image = () => {
           <div className={styles.header}>
             <h3>Image's Description</h3>
             <div className={styles.icon_con}>
-              <div className={styles.single_icn}>
+              <div onClick={copyDesc} className={styles.single_icn}>
                 <FaRegCopy size={15} color="#fff" />
               </div>
               <div className={styles.single_icn}>
