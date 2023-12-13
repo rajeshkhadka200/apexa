@@ -172,3 +172,9 @@
   flex-direction: column;
   gap: 10px;
 }
+.title{
+  /*add ... when title is long*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

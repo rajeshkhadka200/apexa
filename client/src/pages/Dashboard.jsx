@@ -1,12 +1,44 @@
 import React from "react";
 import Visualizer from "../components/Visualizer";
+import SearchBox from "../components/SearchBox";
+import History from "../components/History";
 
 const Dashboard = () => {
   const [search, setSearch] = React.useState("");
-  const onSearch = () => {};
+  const [loading, setLoading] = React.useState(false);
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
+  const onSearch = () => {
+    setLoading(true);
+    useTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  };
+  
+  const history_data = [
+    {
+      thumbnail: "",
+      title:
+        "Yt Lorem isum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+      notif: true,
+      id: "29nm323720302",
+    },
+    {
+      thumbnail: "",
+      title:
+        "Yt Lorem isum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+      notif: true,
+      id: "29nm323720302",
+    },
+    {
+      thumbnail: "",
+      title:
+        "Yt Lorem isum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+      notif: false,
+      id: "29nm323720302",
+    },
+  ];
 
   const comment_data = {
     labels: ["Appreciation", "Vulgar", "Neutral", "Hate"],
@@ -52,12 +84,19 @@ const Dashboard = () => {
   };
   return (
     <>
-      <Visualizer
+      <SearchBox
+        search={search}
+        handleSearch={handleSearch}
+        onSearch={onSearch}
+        type={data.type}
+      />
+      <History data={history_data} />
+      {/* <Visualizer
         handleSearch={handleSearch}
         onSearch={onSearch}
         search={search}
         data={data}
-      />
+      /> */}
     </>
   );
 };
