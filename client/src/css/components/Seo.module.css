@@ -1,0 +1,30 @@
+.container {
+  color: var(--text);
+  border-bottom: 2px solid var(--grayish);
+}
+.header {
+  display: flex;
+  align-items: center;
+  padding: 30px 30px;
+  gap: 20px;
+}
+.header .middle {
+  flex: 1;
+}
+
+.header .right button {
+  background: #00b747;
+  padding: 12px 30px;
+  border-radius: 100vw;
+}
+
+.lower_box {
+  padding: 30px 20px;
+  color: var(--text);
+}
+.indi_box {
+  padding: 10px 10px;
+  background: #1e1f1f;
+  border-radius: 7px;
+  margin-bottom: 20px;
+}
