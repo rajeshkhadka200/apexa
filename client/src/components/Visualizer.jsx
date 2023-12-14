@@ -17,7 +17,7 @@ import Skeleton from "@mui/material/Skeleton";
 
 ChartJS.register(ArcElement, Tip, Legend);
 
-const Visualizer = ({ search, onSearch, handleSearch, data }) => {
+const Visualizer = ({ data }) => {
   const {
     type,
     comment_data,
@@ -99,43 +99,9 @@ const Visualizer = ({ search, onSearch, handleSearch, data }) => {
     },
   }));
 
-  const data1 = {
-    labels: ["Appreciation", "Vulgar", "Neutral", "Hate"],
-    datasets: [
-      {
-        label: "Percentage",
-        data: [300, 50, 100, 60],
-        backgroundColor: ["#f96f10", "#3093ee", "#994abe", "#00b747"],
-        hoverOffset: 4,
-        borderColor: "#1B1B1B",
-        borderWidth: 2,
-        radius: 85,
-      },
-    ],
-  };
-  const data2 = {
-    labels: ["Like", "Dislike"],
-    datasets: [
-      {
-        label: "Percentage",
-        data: [80, 20],
-        backgroundColor: ["#994abe", "#3093ee"],
-        hoverOffset: 4,
-        borderColor: "#1B1B1B",
-        borderWidth: 2,
-        radius: 85,
-      },
-    ],
-  };
-
+  
   return (
     <>
-      <SearchBox
-        search={search}
-        handleSearch={handleSearch}
-        onSearch={onSearch}
-        type={type}
-      />
       <div className={styles.visualizer_con}>
         <div className={styles.data_con}>
           <div className={styles.data_image}>{/* <img src=""/> */}</div>
