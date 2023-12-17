@@ -223,9 +223,6 @@ const Visualizer = ({ data }) => {
         </div>
       </div>
 
-      {
-        //model
-      }
       <Modal
         disableAutoFocus={true}
         open={open}
@@ -235,7 +232,7 @@ const Visualizer = ({ data }) => {
       >
         <div className={styles.summary_con}>
           <div className={styles.summary_title}>
-            Summary{" "}
+            Summary
             <span className={styles.sub_text}>
               {loading && "(Magic on the way... Just Wait)"}
             </span>
