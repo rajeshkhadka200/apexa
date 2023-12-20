@@ -9,12 +9,10 @@ import axios from "../config/axios.js";
 import { ContextProvider } from "../config/Context";
 const Navbar = () => {
   const { user, setUser } = useContext(ContextProvider);
-
   const accessToken = localStorage.getItem("access");
   const refreshToken = localStorage.getItem("refresh");
   // handle googe login
-  const clientId =
-    "845723755077-84sr3ks1ev0tepilulr7rpsrt6pgi83m.apps.googleusercontent.com";
+  const clientId = import.meta.env.VITE_CLIENT_ID;
   useEffect(() => {
     function start() {
       gapi.client.init({
