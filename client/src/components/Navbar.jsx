@@ -7,12 +7,15 @@ import { gapi } from "gapi-script";
 import { useGoogleLogin } from "react-google-login";
 import axios from "../config/axios.js";
 import { ContextProvider } from "../config/Context";
+import IconButton from "@mui/material/IconButton";
 const Navbar = () => {
   const { user, setUser } = useContext(ContextProvider);
   const accessToken = localStorage.getItem("access");
   const refreshToken = localStorage.getItem("refresh");
+
   // handle googe login
   const clientId = import.meta.env.VITE_CLIENT_ID;
+
   useEffect(() => {
     function start() {
       gapi.client.init({
@@ -36,7 +39,7 @@ const Navbar = () => {
       localStorage.setItem("access", accessToken);
       localStorage.setItem("refresh", refreshToken);
       alert(msg);
-      window.location.reload();
+      window.location.href = "/app";
     } catch (error) {
       console.log("Error while", error);
     }
@@ -93,10 +96,12 @@ const Navbar = () => {
           <div className={style.btn_wrapper}>
             {accessToken ? (
               <div className={style.picCon}>
-                <div onClick={Logout}>
-                  <LuLogOut className={style.icn} size={22} color="white" />
-                </div>
                 <img className={style.profilePic} src={user?.profilePic} />
+                <div onClick={Logout}>
+                  <IconButton>
+                    <LuLogOut className={style.icn} size={22} color="white" />
+                  </IconButton>
+                </div>
               </div>
             ) : (
               <>

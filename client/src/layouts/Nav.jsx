@@ -2,14 +2,15 @@ import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Nav = () => {
   const accessToken = localStorage.getItem("access");
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (accessToken) {
-      // <Navigate to="/" />;
+    if (accessToken === null ) {
+     return navigate("/");
     }
   }, []);
 

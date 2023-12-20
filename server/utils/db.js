@@ -4,11 +4,11 @@ const url =
 
 export const connectDB = async () => {
   try {
-    await mongoose.connect(url, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+    const host = await mongoose.connect(url, {
+      // useNewUrlParser: true,
+      // useUnifiedTopology: true,
     });
-    console.log(`🚀 successfully connected to the database:`);
+    console.log(`✅ MongoDB Connected:`, host.connections[0].host);
   } catch (error) {
     console.error(`Error connecting to the database: ${error.message}`);
   }

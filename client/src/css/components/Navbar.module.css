@@ -94,12 +94,15 @@
 }
 .picCon {
   display: flex;
+  justify-content: center;
   align-items: center;
+  padding-inline: 1rem;
+  gap: 1rem;
 }
 
 .icn {
-  margin-right: 20px;
   cursor: pointer;
+  /* margin-top: 5px; */
 }
 
 .profilePic {
