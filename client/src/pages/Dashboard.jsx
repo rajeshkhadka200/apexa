@@ -90,13 +90,13 @@ const Dashboard = () => {
         onSearch={onSearch}
         type={data.type}
       />
-      <History data={history_data} />
-      {/* <Visualizer
+      {/* <History data={history_data} /> */}
+      <Visualizer
         handleSearch={handleSearch}
         onSearch={onSearch}
         search={search}
         data={data}
-      /> */}
+      />
     </>
   );
 };
