@@ -14,7 +14,7 @@ export default function Router() {
       path: "/app",
       element: <Nav />,
       children: [
-        { path: "", element: <Dashboard /> },
+        { path: "yt", element: <Dashboard /> },
         { path: "blog", element: <Blog /> },
         { path: "image", element: <Image /> },
         { path: "seo", element: <Seo /> },

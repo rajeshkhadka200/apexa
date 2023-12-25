@@ -21,11 +21,11 @@ const blogSchema = new mongoose.Schema({
       // not found
     },
     like: {
-      type: String,
+      type: Number,
       // not found
     },
     comment: {
-      type: String,
+      type: Number,
     },
   },
   insights: {
