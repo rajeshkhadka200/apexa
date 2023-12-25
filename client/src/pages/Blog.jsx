@@ -36,7 +36,7 @@ const Blog = () => {
 
 
   const comment_data = {
-    labels: ["Appreciation", "Vulgar", "Neutral", "Hate"],
+    labels: ["Appreciation", "Spam ", "Neutral", "Hate"],
     datasets: [
       {
         label: "Percentage",

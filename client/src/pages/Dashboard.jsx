@@ -41,11 +41,11 @@ const Dashboard = () => {
   ];
 
   const comment_data = {
-    labels: ["Appreciation", "Vulgar", "Neutral", "Hate"],
+    labels: ["Appreciation", "Spam", "Neutral", "Hate"],
     datasets: [
       {
         label: "Percentage",
-        data: [300, 50, 100, 60],
+        data: [22.72, 27.27, 13.63, 36.36],
         backgroundColor: ["#f96f10", "#3093ee", "#994abe", "#00b747"],
         hoverOffset: 4,
         borderColor: "#1B1B1B",
