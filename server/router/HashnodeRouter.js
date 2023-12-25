@@ -4,6 +4,6 @@ import { getBlog } from "../controller/HashnodeController.js";
 //instances
 const router = Router();
 
-router.post("/", getBlog);
+router.get("/", getBlog);
 
 export default router;

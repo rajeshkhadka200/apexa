@@ -28,10 +28,9 @@ export const getPercentage = (sentiment, like_count, view_count) => {
 };
 
 //Insight Processing
-export const getSentiment = async (initial, comments) => {
+export const getSentiment = async (initial, comments, app) => {
   let sentiment = [];
-  const reversedComments = comments.rows.reverse();
-  console.log(reversedComments);
+  const reversedComments = app === "youtube" ? comments.reverse() : comments;
   for (let i = initial; i < reversedComments.length; i += 5) {
     let comment = "";
     for (let j = 0; j < 5; j++) {
@@ -69,19 +68,30 @@ export const getSentiment = async (initial, comments) => {
 };
 
 // Summary Processing
-export const getSummary = async (videos) => {
-  const transcript = videos.rows[0]?.transcript;
-  const transcriptArray = JSON.parse(transcript);
-  const joinedText = transcriptArray.map((item) => item.text).join(" ");
+export const getSummary = async (data, app) => {
+  if (app === "youtube") {
+    const transcript = data.rows[0]?.transcript;
+    const transcriptArray = JSON.parse(transcript);
+    const joinedText = transcriptArray.map((item) => item.text).join(" ");
 
-  const summary_result = await MindsDB.default.SQL.runQuery(`
+    const summary_result = await MindsDB.default.SQL.runQuery(`
         SELECT transcript, summary
         FROM mindsdb.text_summary
         WHERE transcript="${joinedText}";
        `);
 
-  const summary = summary_result.rows[0]?.summary;
-  return summary;
+    const summary = summary_result.rows[0]?.summary;
+    return summary;
+  }
+  //remove all the slashes, **, #, \n and markdown formatting syntax, links and images
+
+  const summary_result = await MindsDB.default.SQL.runQuery(`
+        SELECT markdown, summary
+        FROM mindsdb.blog_summary
+        WHERE markdown="${data}";
+       `);
+
+  return summary_result.rows[0]?.summary;
 };
 
 export const getVideoData = async (video_id) => {
@@ -100,4 +110,32 @@ export const getComments = async (video_id) => {
   );
 
   return comments;
+};
+
+export const removeMarkdownSyntax = (data) => {
+  const regex = /(\r\n|\n|\r)/gm;
+  const regex2 = /(\*\*|__)(.*?)\1/gm;
+  const regex3 = /(\*|_)(.*?)\1/gm;
+  const regex4 = /(\#)(.*?)\1/gm;
+  const regex5 = /(\!\[)(.*?)(\]\()(.*?)(\))/gm;
+  const regex6 = /(\[)(.*?)(\]\()(.*?)(\))/gm;
+  const regex7 = /(\`)(.*?)(\`)/gm;
+  const regex8 = /(\~\~)(.*?)(\~\~)/gm;
+  const regex9 = /(<([^>]+)>)/gi;
+  // remove double quotes
+  const regex10 = /\"/gm;
+
+  const result = data
+    .replace(regex, "")
+    .replace(regex2, "$2")
+    .replace(regex3, "$2")
+    .replace(regex4, "$2")
+    .replace(regex5, "")
+    .replace(regex6, "$2")
+    .replace(regex7, "$2")
+    .replace(regex8, "$2")
+    .replace(regex9, "")
+    .replace(regex10, "");
+
+  return result;
 };

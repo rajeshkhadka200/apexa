@@ -21,11 +21,13 @@ export const getYtData = async (req, res) => {
     const videos = await getVideoData(video_id);
     if (ytData) {
       console.log("Video id exist in DB");
-      console.log("New", comments.rows.length);
-      console.log("Prev", ytData.prevComment);
       if (comments.rows.length > ytData.prevComment) {
         console.log("New comments found");
-        const sentiment = await getSentiment(ytData.prevComment, comments);
+        const sentiment = await getSentiment(
+          ytData.prevComment,
+          comments.rows,
+          "youtube"
+        );
 
         console.log("The total no. of new sentiment: ", sentiment.length);
         console.log(sentiment);
@@ -35,7 +37,7 @@ export const getYtData = async (req, res) => {
           hate_percentage,
           neutral_percentage,
           spam_percentage,
-        } = getPercentage(sentiment, videos.rows[0]?.like_count);
+        } = getPercentage(sentiment);
 
         const newAppreciation =
           (ytData.insight.appreciation * ytData.prevComment +
@@ -94,7 +96,7 @@ export const getYtData = async (req, res) => {
     } else {
       console.log("Processing for new yt video");
       console.log(comments.rows.length);
-      const sentiment = await getSentiment(0, comments);
+      const sentiment = await getSentiment(0, comments.rows, "youtube");
 
       console.log("The total no. of sentiment: ", sentiment.length);
       console.log(sentiment);
@@ -106,13 +108,9 @@ export const getYtData = async (req, res) => {
         spam_percentage,
         like_percentage,
         dislike_percentage,
-      } = getPercentage(
-        sentiment,
-        videos.rows[0]?.like_count,
-        videos.rows[0]?.view_count
-      );
+      } = getPercentage(sentiment);
 
-      const summary = await getSummary(videos);
+      const summary = await getSummary(videos, "youtube");
 
       // Save to DB
       const yt = new Yt({
