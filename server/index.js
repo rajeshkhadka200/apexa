@@ -7,7 +7,8 @@ import cors from "cors";
 import AuthRouter from "./router/AuthRouter.js";
 import TokenRouter from "./router/TokenRouter.js";
 import UserRouter from "./router/UserRouter.js";
-import YtRouter from "./router/YtRouter.js"
+import YtRouter from "./router/YtRouter.js";
+import HashnodeRouter from "./router/HashnodeRouter.js";
 
 const app = express();
 
@@ -23,7 +24,8 @@ connectMindsDB();
 app.use("/api/auth", AuthRouter);
 app.use("/api/token", TokenRouter);
 app.use("/api/user", UserRouter);
-app.use("/api/yt",YtRouter)
+app.use("/api/yt", YtRouter);
+app.use("/api/hashnode", HashnodeRouter);
 
 //test route
 app.get("/", (req, res) => {
