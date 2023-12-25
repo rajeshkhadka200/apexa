@@ -39,7 +39,7 @@ const Navbar = () => {
       localStorage.setItem("access", accessToken);
       localStorage.setItem("refresh", refreshToken);
       alert(msg);
-      window.location.href = "/app";
+      window.location.href = "/app/yt";
     } catch (error) {
       console.log("Error while", error);
     }

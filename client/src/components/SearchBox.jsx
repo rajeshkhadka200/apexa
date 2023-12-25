@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { BsSearch } from "react-icons/bs";
 import { styled } from "@mui/material/styles";
+import { NavLink } from "react-router-dom";
 
 const SearchBox = ({ search, onSearch, handleSearch, type }) => {
   const SearchButton = styled(Button)({
@@ -53,9 +54,15 @@ const SearchBox = ({ search, onSearch, handleSearch, type }) => {
               },
           }}
         />
-        <SearchButton component="label" variant="contained" onClick={onSearch}>
-          <BsSearch />
-        </SearchButton>
+        <NavLink to="/app/yt/hejwuhwehiwh">
+          <SearchButton
+            component="label"
+            variant="contained"
+            onClick={onSearch}
+          >
+            <BsSearch />
+          </SearchButton>
+        </NavLink>
       </div>
     </>
   );

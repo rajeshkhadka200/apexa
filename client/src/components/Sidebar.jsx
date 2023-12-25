@@ -9,7 +9,7 @@ import Link from "./Link";
 const Sidebar = () => {
   const links = [
     {
-      to: "/app",
+      to: "/app/yt",
       icon: <PiYoutubeLogoDuotone size={30} />,
       title: "YT-Insight",
       c: "#f96f10",

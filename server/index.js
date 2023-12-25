@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 connectDB();
 connectMindsDB();
 
+
 // using the routes
 app.use("/api/auth", AuthRouter);
 app.use("/api/token", TokenRouter);
