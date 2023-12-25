@@ -11,7 +11,7 @@ const NavFoot = () => {
 
   useEffect(() => {
     if (accessToken) {
-      return navigate("/app");
+      return navigate("/app/yt");
     }
   }, []);
   return (

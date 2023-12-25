@@ -1,4 +1,6 @@
 {
   "docwriter.progress.trackFunctions": false,
-  "docwriter.progress.trackMethods": false
+  "docwriter.progress.trackMethods": false,
+  "editor.fontFamily": "'Fira Code', 'Cascadia Code', 'Consolas'",
+  "editor.fontLigatures": true
 }

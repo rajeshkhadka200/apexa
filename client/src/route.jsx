@@ -1,7 +1,7 @@
 import { useRoutes } from "react-router-dom";
 import Nav from "./layouts/Nav";
 import NavFoot from "./layouts/NavFoot";
-import { Dashboard, Blog, Image, Seo, Hero } from "./pages";
+import { Dashboard, Blog, Image, Seo, Hero,YtDetail,BlogDetail } from "./pages";
 
 export default function Router() {
   return useRoutes([
@@ -18,6 +18,8 @@ export default function Router() {
         { path: "blog", element: <Blog /> },
         { path: "image", element: <Image /> },
         { path: "seo", element: <Seo /> },
+        { path: "yt/:id", element: <YtDetail /> },
+        { path: "blog/:id", element: <BlogDetail /> },
       ],
     },
   ]);

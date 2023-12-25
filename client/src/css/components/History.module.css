@@ -14,6 +14,7 @@
   width: 100%;
   /* border: 1px solid red; */
   justify-content: space-between;
+  transition: 0.1s;
 }
 .box {
   display: flex;
@@ -23,6 +24,9 @@
   /* border: 1px solid red; */
   color: var(--gray-text);
   font-size: 1.1rem;
+}
+.history:hover {
+  background-color: var(--grayish);
 }
 .t_text {
   overflow: hidden;
