@@ -16,9 +16,14 @@ export const getBlog = async (req, res) => {
         query Pubs {
             publication(host: "${hostPart}") {
               id
+              title
               post(
                 slug: "${slugPart}"
               ) {
+                content {
+                  markdown
+                  html
+                }
                 comments(first:50) {
                   edges{
                     node{
@@ -29,6 +34,7 @@ export const getBlog = async (req, res) => {
                     }
                   }
                 }
+                title
               }
             }
           }
@@ -38,6 +44,10 @@ export const getBlog = async (req, res) => {
 
     let result = await response.json();
     let comments = result.data.publication.post.comments.edges;
+    let markdown = result.data.publication.post.content.markdown;
+    let title = result.data.publication.post.title;
+    let creatorName = result.data.publication.title;
+    let coverImage = result.data.publication.post.coverImage;
   } catch (error) {
     console.log(error);
   }
