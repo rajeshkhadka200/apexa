@@ -2,16 +2,38 @@ import React from "react";
 import Visualizer from "../components/Visualizer";
 import SearchBox from "../components/SearchBox";
 import History from "../components/History";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [search, setSearch] = React.useState("");
   const [loading, setLoading] = React.useState(false);
+
+  const navigate = useNavigate();
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
   const onSearch = () => {
+    if (search === "") {
+      alert("Please enter a youtube link");
+      return;
+    }
+    let youtubePattern =
+      /^(https?:\/\/)?(www\.)?(youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+
+    if (!youtubePattern.test(search)) {
+      alert("Please enter a valid youtube url");
+      return;
+    }
+
+    //get video id from url
+    let video_id = search.split("v=")[1];
+    if (video_id === undefined) {
+      video_id = search.split("youtu.be/")[1];
+    }
+
+    navigate(`/app/yt/${video_id}`);
   };
-  
+
   const history_data = [
     {
       thumbnail: "",
@@ -36,7 +58,6 @@ const Dashboard = () => {
     },
   ];
 
-  
   return (
     <>
       <SearchBox

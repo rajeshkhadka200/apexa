@@ -11,9 +11,11 @@ import {
 
 export const getYtData = async (req, res) => {
   try {
-    // const { video_id, user_id } = req.body;
-    const user_id = "60b9b6f0c9b0c9b9e0a1a1a1";
-    const video_id = "bqjmvJFHGbw";
+    const { video_id, user_id } = req.body;
+    console.log("Video id: ", video_id);
+    console.log("User id: ", user_id);
+    // const user_id = "60b9b6f0c9b0c9b9e0a1a1a1";
+    // const video_id = "bqjmvJFHGbw";
 
     const ytData = await Yt.findOne({ "details.video_id": video_id });
 

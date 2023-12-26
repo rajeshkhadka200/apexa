@@ -29,11 +29,17 @@ const Visualizer = ({ data }) => {
     like,
     comment,
     color,
+    summary,
+    notif
   } = data;
 
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
+   const [checked, setChecked] = React.useState(notif);
 
+   const handleCheckChange = (event) => {
+     setChecked(event.target.checked);
+   };
   //test loading logic [P.S. This is just for testing and will be removed later]
   useEffect(() => {
     //set the loading to false after 5 seconds
@@ -99,12 +105,13 @@ const Visualizer = ({ data }) => {
     },
   }));
 
-  
   return (
     <>
       <div className={styles.visualizer_con}>
         <div className={styles.data_con}>
-          <div className={styles.data_image}>{/* <img src=""/> */}</div>
+          <div className={styles.data_image}>
+            <img src={thumbnail} />
+          </div>
           <div className={styles.data_text}>
             <div className={styles.title}>{title}</div>
             <div className={styles.user_details}>
@@ -152,7 +159,12 @@ const Visualizer = ({ data }) => {
                 >
                   <div className={styles.notif}>
                     <FormControlLabel
-                      control={<NotifSwitch />}
+                      control={
+                        <NotifSwitch
+                          checked={checked}
+                          onChange={handleCheckChange}
+                        />
+                      }
                       label="Notification"
                       sx={{
                         marginLeft: "10px",
@@ -269,9 +281,7 @@ const Visualizer = ({ data }) => {
           ) : (
             <>
               <TypeAnimation
-                sequence={[
-                  "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid veniam magni, laborum, molestiae itaque necessitatibus reprehenderit non perferendis atque voluptatibus quia facere velit officiis maiores assumenda eaque quod repellendus voluptates.Ea minus corporis magnam nihil perferendis dolores, illo nesciunt distinctio vero? Numquam mollitia nihil quo dignissimos dolorum alias deleniti, modi quis accusamus. Sed optio exercitationem atque natus, error vitae excepturi",
-                ]}
+                sequence={[summary]}
                 wrapper="span"
                 speed={80}
                 style={{

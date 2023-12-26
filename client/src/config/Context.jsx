@@ -64,8 +64,7 @@ const Context = ({ children }) => {
     <>
       <ContextProvider.Provider
         value={{
-          user,
-          setUser,
+         usr:[user, setUser]
         }}
       >
         {children}
