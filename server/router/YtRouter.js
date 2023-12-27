@@ -4,6 +4,6 @@ import { getYtData } from "../controller/YtController.js";
 //instances
 const router = Router();
 
-router.get("/", getYtData);
+router.post("/", getYtData);
 
 export default router;

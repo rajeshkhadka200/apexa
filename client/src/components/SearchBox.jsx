@@ -36,6 +36,7 @@ const SearchBox = ({ search, onSearch, handleSearch, type }) => {
           type="search"
           value={search}
           onChange={(e) => handleSearch(e)}
+          disabled={type === "detail" ? true : false}
           hiddenLabel
           sx={{
             height: "50px",
@@ -43,6 +44,7 @@ const SearchBox = ({ search, onSearch, handleSearch, type }) => {
             backgroundColor: "#050505",
             border: "2px solid #2d2d2d52",
             borderRadius: "10px 0px 0px 10px",
+            cursor: type === "detail" && "not-allowed",
             "& .MuiInputBase-input": {
               color: "#575a60a6",
               fontSize: "17px",
@@ -52,17 +54,27 @@ const SearchBox = ({ search, onSearch, handleSearch, type }) => {
               {
                 border: "none",
               },
+            //change the input font color when input is disabled
+            "& .MuiInputBase-input.Mui-disabled": {
+              WebkitTextFillColor: "#575a60a6",
+            },
           }}
         />
-        <NavLink to="/app/yt/hejwuhwehiwh">
-          <SearchButton
-            component="label"
-            variant="contained"
-            onClick={onSearch}
-          >
-            <BsSearch />
-          </SearchButton>
-        </NavLink>
+        <SearchButton
+          component="label"
+          variant="contained"
+          onClick={onSearch}
+          sx={{
+            //chnage the cursor to disable
+            cursor: type === "detail" && "not-allowed",
+            "&:hover": {
+              backgroundColor:
+                search === "" ? "#050505" : "rgba(39, 39, 39, 0.2)",
+            },
+          }}
+        >
+          <BsSearch />
+        </SearchButton>
       </div>
     </>
   );

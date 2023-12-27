@@ -70,6 +70,7 @@ export const getSentiment = async (initial, comments, app) => {
 // Summary Processing
 export const getSummary = async (data, app) => {
   if (app === "youtube") {
+    console.log(data)
     const transcript = data.rows[0]?.transcript;
     const transcriptArray = JSON.parse(transcript);
     const joinedText = transcriptArray.map((item) => item.text).join(" ");
