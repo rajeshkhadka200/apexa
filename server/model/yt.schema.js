@@ -62,6 +62,10 @@ const ytSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  contentType: {
+    type: String,
+    default: "video",
+  },
   createdAt: {
     type: Date,
     default: new Date(),

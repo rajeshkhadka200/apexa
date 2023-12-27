@@ -8,6 +8,13 @@
   border-radius: 5px;
   border: 2px solid var(--grayish);
 }
+.t_thumbnail img {
+  height: 100%;
+  border-radius: 5px;
+  width: 100%;
+
+  object-fit: cover;
+}
 .history {
   display: flex;
   cursor: pointer;
@@ -35,19 +42,20 @@
   color: var(--gray-text);
   max-width: 400px;
 }
-.notif_yes,.notif_no{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2px 5px;
-    border-radius: 5px;
-    font-size: 14px;
+.notif_yes,
+.notif_no {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 5px;
+  border-radius: 5px;
+  font-size: 14px;
 }
-.notif_yes{
-    color: rgb(19, 203, 19);
-    background-color: rgba(21, 190, 21, 0.373);
+.notif_yes {
+  color: rgb(19, 203, 19);
+  background-color: rgba(21, 190, 21, 0.373);
 }
-.notif_no{
-    color: rgb(203, 19, 19);
-    background-color: rgba(190, 21, 21, 0.373);
+.notif_no {
+  color: rgb(203, 19, 19);
+  background-color: rgba(190, 21, 21, 0.373);
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../css/components/Visualizer.module.css";
 import SearchBox from "./SearchBox";
 import { BiCommentDetail } from "react-icons/bi";
@@ -30,16 +30,16 @@ const Visualizer = ({ data }) => {
     comment,
     color,
     summary,
-    notif
+    notif,
   } = data;
 
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
-   const [checked, setChecked] = React.useState(notif);
+  const [checked, setChecked] = React.useState(notif);
 
-   const handleCheckChange = (event) => {
-     setChecked(event.target.checked);
-   };
+  const handleCheckChange = (event) => {
+    setChecked(event.target.checked);
+  };
   //test loading logic [P.S. This is just for testing and will be removed later]
   useEffect(() => {
     //set the loading to false after 5 seconds

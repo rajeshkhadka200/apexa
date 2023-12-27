@@ -45,6 +45,7 @@ const Context = ({ children }) => {
         },
       });
       setUser(res?.data?.user);
+      localStorage.setItem("user_id", res?.data?.user?._id);
     } catch (error) {
       if (error.response && error.response.status === 401) {
         const accessTok = await getAccessToken();
@@ -53,7 +54,8 @@ const Context = ({ children }) => {
             "x-access-token": accessTok,
           },
         });
-        console.log(res);
+        localStorage.setItem("user_id", res?.data?.user?._id);
+
         setUser(res?.data?.user);
       }
       console.log(error);
@@ -64,7 +66,8 @@ const Context = ({ children }) => {
     <>
       <ContextProvider.Provider
         value={{
-         usr:[user, setUser]
+          user,
+          setUser,
         }}
       >
         {children}

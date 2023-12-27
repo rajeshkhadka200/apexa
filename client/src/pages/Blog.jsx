@@ -1,37 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SearchBox from "../components/SearchBox";
-import History from "../components/History";
+import { useNavigate } from "react-router-dom";
+import axios from "../config/axios";
+import BlogHistory from "../components/BlogHistory";
 
 const Blog = () => {
+  const navigate = useNavigate();
+
   const [search, setSearch] = React.useState("");
-  const onSearch = () => {};
+  const onSearch = () => {
+    if (search === "") {
+      alert("Please enter a Hashnode link");
+      return;
+    }
+    const urlObject = new URL(search);
+    const slugPart = urlObject.pathname.replace(/^\/+/, "");
+
+    navigate(`/app/blog/${slugPart}`, {
+      state: { search },
+    });
+  };
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
 
-   const history_data = [
-     {
-       thumbnail: "",
-       title:
-         "Blog Lorem isum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-       notif: true,
-       id: "29nm323720302",
-     },
-     {
-       thumbnail: "",
-       title:
-         "Blog Lorem isum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-       notif: true,
-       id: "29nm323720302",
-     },
-     {
-       thumbnail: "",
-       title:
-         "Blog Lorem isum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-       notif: false,
-       id: "29nm323720302",
-     },
-   ];
+  //  request for the history performed by loged in user
+  const [blogHisory, setblogHistory] = useState();
+  const user_id = localStorage.getItem("user_id");
+  useEffect(() => {
+    const getHistory = async () => {
+      try {
+        const res = await axios.get(`user/getblogHistory/${user_id}`, {
+          onDownloadProgress: (progressEvent) => {
+            const progress = Math.round(
+              (progressEvent.loaded / progressEvent.total) * 100
+            );
+            console.log(progress);
+          },
+        });
+        setblogHistory(res.data.history);
+      } catch (error) {
+        console.log(error);
+        console.log("Error fetching blog history data");
+      }
+    };
+    getHistory();
+  }, []);
 
   return (
     <>
@@ -41,8 +55,7 @@ const Blog = () => {
         onSearch={onSearch}
         type={"blog"}
       />
-      <History data={history_data}/>
-
+      <BlogHistory data={blogHisory} />
     </>
   );
 };

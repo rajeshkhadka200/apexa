@@ -7,10 +7,7 @@ import {
 import Blog from "../model/blog.schema.js";
 
 export const getBlog = async (req, res) => {
-  // const { blogURL,user_id } = req.body;
-  const user_id = "60b9b6f0c9b0c9b9e0a1a1a1";
-  const blogURL =
-    "https://blog.utsavbhattarai.info.np/code-conquer-and-create-my-journey-as-a-developer-dev-retro-2022";
+  const { blogURL, user_id } = req.body;
   const urlObject = new URL(blogURL);
   const hostPart = urlObject.host;
   const slugPart = urlObject.pathname.replace(/^\/+/, "");
@@ -30,6 +27,9 @@ export const getBlog = async (req, res) => {
               post(
                 slug: "${slugPart}"
               ) {
+                coverImage {
+                  url
+                }
                 content {
                   markdown
                   html
@@ -61,7 +61,7 @@ export const getBlog = async (req, res) => {
     let markdown = result.data.publication.post.content.markdown;
     let title = result.data.publication.post.title;
     let creatorName = result.data.publication.title;
-    let coverImage = result.data.publication.post.coverImage;
+    let coverImage = result.data.publication.post.coverImage.url;
     const blogData = await Blog.findOne({ "details.blog_url": blogURL });
     const commentsArray = [];
     comments.forEach((comment) => {
@@ -147,7 +147,7 @@ export const getBlog = async (req, res) => {
       });
     } else {
       console.log("Processing for new Blog");
-      const sentiment = await getSentiment(0, commentsArray,"hashnode");
+      const sentiment = await getSentiment(0, commentsArray, "hashnode");
       console.log("The total no. of new sentiment: ", sentiment.length);
       console.log(sentiment);
 

@@ -10,6 +10,8 @@ import { ContextProvider } from "../config/Context";
 import IconButton from "@mui/material/IconButton";
 const Navbar = () => {
   const { user, setUser } = useContext(ContextProvider);
+  // const [] = usr;
+
   const accessToken = localStorage.getItem("access");
   const refreshToken = localStorage.getItem("refresh");
 

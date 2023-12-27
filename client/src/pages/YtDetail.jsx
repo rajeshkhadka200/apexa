@@ -2,28 +2,24 @@ import React, { useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Visualizer from "../components/Visualizer";
 import SearchBox from "../components/SearchBox";
-import CircularProgressBar from "../components/CircularProgressBar";
 import axios from "../config/axios";
 import { ContextProvider } from "../config/Context";
 
 const YtDetail = () => {
   const [search, setSearch] = React.useState("");
-  const [loading, setLoading] = React.useState(true);
-  const [progress, setProgress] = React.useState(0);
+  const [contentLoading, setcontentLoading] = React.useState(false);
   const [details, setDetails] = React.useState();
 
   const navigate = useNavigate();
-
-  const { usr } = useContext(ContextProvider);
-  const [user, setUser] = usr;
+  const { user } = useContext(ContextProvider);
+  // const [user, setUser] = usr;
 
   //get the id from the route url
   const { id } = useParams();
-
   React.useEffect(() => {
+    setcontentLoading(true);
     const fetchData = async () => {
       try {
-        console.log(user?._id, " ",id)
         const res = await axios.post(
           `/yt`,
           {
@@ -38,11 +34,11 @@ const YtDetail = () => {
         );
         setDetails(res.data.data);
         if (res) {
-          setLoading(false);
+          setcontentLoading(false);
         }
       } catch (error) {
         console.log(error);
-        setLoading(false);
+        setcontentLoading(false);
         navigate("/app/yt");
       }
     };
@@ -62,7 +58,12 @@ const YtDetail = () => {
     datasets: [
       {
         label: "Percentage",
-        data: [details?.insight?.appreciation, details?.insight?.spam, details?.insight?.neutral, details?.insight?.hate],
+        data: [
+          details?.insight?.appreciation,
+          details?.insight?.spam,
+          details?.insight?.neutral,
+          details?.insight?.hate,
+        ],
         backgroundColor: ["#f96f10", "#3093ee", "#994abe", "#00b747"],
         hoverOffset: 4,
         borderColor: "#1B1B1B",
@@ -77,7 +78,10 @@ const YtDetail = () => {
     datasets: [
       {
         label: "Percentage",
-        data: [details?.insight.overall?.like, details?.insight.overall?.dislike],
+        data: [
+          details?.insight.overall?.like,
+          details?.insight.overall?.dislike,
+        ],
         backgroundColor: ["#994abe", "#3093ee"],
         hoverOffset: 4,
         borderColor: "#1B1B1B",
@@ -100,19 +104,6 @@ const YtDetail = () => {
     summary: details?.summary,
   };
 
-  //loading screen
-  if (loading) {
-    return (
-      <>
-        <div className={"loading_wrapper"}>
-          <CircularProgressBar value={progress} color="#f96f10" />
-          <h1 className={"loading_text"}>
-            Hold tight! Crunching Data for you <span className="emoji">🫵</span>
-          </h1>
-        </div>
-      </>
-    );
-  }
   return (
     <>
       <SearchBox

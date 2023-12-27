@@ -1,6 +1,8 @@
 import User from "../model/user.schema.js";
 import UserToken from "../model/userToken.schema.js";
 import verifyRefreshToken from "../utils/verifyRefreshToken.js";
+import Yt from "../model/yt.schema.js";
+import blog from "../model/blog.schema.js";
 
 export const getUser = async (req, res) => {
   try {
@@ -31,5 +33,55 @@ export const userLogout = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: true, msg: "Internal server error" });
+  }
+};
+
+//  generate yt history
+export const generateYtHistory = async (req, res) => {
+  const { user_id } = req.params;
+  try {
+    const ytHistory = await Yt.find({ user_id });
+    if (ytHistory.length > 0) {
+      return res.status(200).json({
+        error: false,
+        msg: "YT history got",
+        history: ytHistory,
+      });
+    }
+    return res.status(404).json({
+      error: false,
+      msg: "Unble to get Youtube History",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      error: true,
+      msg: "Internal server Error",
+    });
+  }
+};
+//  generate yt history
+export const generateBolgHistory = async (req, res) => {
+  const { user_id } = req.params;
+  try {
+    const blogHistory = await blog.find({ user_id });
+
+    if (blogHistory.length > 0) {
+      return res.status(200).json({
+        error: false,
+        msg: "Blog history got",
+        history: blogHistory,
+      });
+    }
+    return res.status(404).json({
+      error: false,
+      msg: "Unble to get Blog History",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      error: true,
+      msg: "Internal server Error",
+    });
   }
 };

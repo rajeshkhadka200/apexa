@@ -60,6 +60,10 @@ const blogSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  contentType: {
+    type: String,
+    default: "blog",
+  },
   createdAt: {
     type: Date,
     default: new Date(),
