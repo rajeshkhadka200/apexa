@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "../css/components/Visualizer.module.css";
 import SearchBox from "./SearchBox";
 import { BiCommentDetail } from "react-icons/bi";
@@ -14,6 +14,7 @@ import { Doughnut } from "react-chartjs-2";
 import Modal from "@mui/material/Modal";
 import { TypeAnimation } from "react-type-animation";
 import Skeleton from "@mui/material/Skeleton";
+import { ContextProvider } from "../config/Context";
 
 ChartJS.register(ArcElement, Tip, Legend);
 
@@ -33,6 +34,7 @@ const Visualizer = ({ data }) => {
     notif,
   } = data;
 
+  const { ytLoading, setYtloading } = useContext(ContextProvider);
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
   const [checked, setChecked] = React.useState(notif);

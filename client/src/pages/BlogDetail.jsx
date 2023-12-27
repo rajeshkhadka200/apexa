@@ -7,7 +7,7 @@ import axios from "../config/axios.js";
 
 const BlogDetail = () => {
   const [search, setSearch] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
+  const [contentLoading, setcontentLoading] = React.useState(true);
   const { user, setUser } = React.useContext(ContextProvider);
   const [details, setDetails] = React.useState();
 
@@ -36,6 +36,7 @@ const BlogDetail = () => {
           }
         );
         setDetails(res.data.data);
+        setcontentLoading(false);
       } catch (error) {
         console.log("Error fecting data");
       }
@@ -93,6 +94,26 @@ const BlogDetail = () => {
     color: "#f96f10",
     summary: details?.summary,
   };
+
+  if (contentLoading) {
+    return (
+      <>
+        <div className="containerloader">
+          <div class="lds-grid">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>

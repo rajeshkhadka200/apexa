@@ -7,17 +7,16 @@ import { ContextProvider } from "../config/Context";
 
 const YtDetail = () => {
   const [search, setSearch] = React.useState("");
-  const [contentLoading, setcontentLoading] = React.useState(false);
+  const [contentLoading, setcontentLoading] = React.useState(true);
   const [details, setDetails] = React.useState();
+  const { user } = useContext(ContextProvider);
 
   const navigate = useNavigate();
-  const { user } = useContext(ContextProvider);
   // const [user, setUser] = usr;
 
   //get the id from the route url
   const { id } = useParams();
   React.useEffect(() => {
-    setcontentLoading(true);
     const fetchData = async () => {
       try {
         const res = await axios.post(
@@ -38,7 +37,7 @@ const YtDetail = () => {
         }
       } catch (error) {
         console.log(error);
-        setcontentLoading(false);
+        setYtloading(false);
         navigate("/app/yt");
       }
     };
@@ -104,6 +103,25 @@ const YtDetail = () => {
     summary: details?.summary,
   };
 
+  if (contentLoading) {
+    return (
+      <>
+        <div className="containerloader">
+          <div class="lds-grid">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </>
+    );
+  }
   return (
     <>
       <SearchBox
