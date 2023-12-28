@@ -43,7 +43,7 @@ const BlogDetail = () => {
       } catch (error) {
         console.log("Error fecting data");
         navigate("/app/yt");
-        toast.success("Unable to load the insights !");
+        toast.error("Unable to load the insights !");
       }
     };
     fetchData();

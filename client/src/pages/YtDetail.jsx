@@ -36,10 +36,12 @@ const YtDetail = () => {
         toast.success("Here we go with your insghts ! 🚀");
         setcontentLoading(false);
       } catch (error) {
-        console.log(error);
-        setYtloading(false);
-        navigate("/app/blog");
-        toast.error("Unable to load the insights");
+        if (error.status === 500) {
+          console.log(error);
+          setYtloading(false);
+          navigate("/app/yt");
+          toast.error("Unable to load the insights");
+        }
       }
     };
     fetchData();
