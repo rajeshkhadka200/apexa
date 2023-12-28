@@ -156,3 +156,23 @@ export const getYtData = async (req, res) => {
     });
   }
 };
+
+export const deleteYTHistory = async (req, res) => {
+  const { video_id } = req.params;
+  try {
+    const deletedData = await Yt.findOneAndDelete({
+      "details.video_id": video_id,
+    });
+
+    return res.status(200).json({
+      mesg: deletedData.details.title + " Deleted syccessfully",
+      id: deletedData.details.video_id,
+      error: false,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: true,
+      msg: "Internal Server Error, while deleting video",
+    });
+  }
+};

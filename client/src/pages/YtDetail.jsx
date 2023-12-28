@@ -4,6 +4,7 @@ import Visualizer from "../components/Visualizer";
 import SearchBox from "../components/SearchBox";
 import axios from "../config/axios";
 import { ContextProvider } from "../config/Context";
+import toast from "react-hot-toast";
 
 const YtDetail = () => {
   const [search, setSearch] = React.useState("");
@@ -32,13 +33,13 @@ const YtDetail = () => {
           }
         );
         setDetails(res.data.data);
-        if (res) {
-          setcontentLoading(false);
-        }
+        toast.success("Here we go with your insghts ! 🚀");
+        setcontentLoading(false);
       } catch (error) {
         console.log(error);
         setYtloading(false);
-        navigate("/app/yt");
+        navigate("/app/blog");
+        toast.error("Unable to load the insights");
       }
     };
     fetchData();
@@ -63,7 +64,7 @@ const YtDetail = () => {
           details?.insight?.neutral,
           details?.insight?.hate,
         ],
-        backgroundColor: ["#f96f10", "#3093ee", "#994abe", "#00b747"],
+        backgroundColor: [" #00b747", "#3093ee", "#994abe", "#f96f10"],
         hoverOffset: 4,
         borderColor: "#1B1B1B",
         borderWidth: 2,

@@ -1,10 +1,11 @@
 import React from "react";
-import { useState } from "react";
 import Router from "./route";
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <>
+      <Toaster />
       <Router />
     </>
   );

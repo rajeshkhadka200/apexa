@@ -200,3 +200,23 @@ export const getBlog = async (req, res) => {
     console.log(error);
   }
 };
+
+export const deleteblogHistory = async (req, res) => {
+  const { blog_url } = req.body;
+  try {
+    const deletedBlog = await Blog.findOneAndDelete({
+      "details.blog_url": blog_url,
+    });
+
+    return res.status(200).json({
+      mesg: deletedBlog.details.blog_url + " Deleted syccessfully",
+      id: deletedBlog.details.blog_url,
+      error: false,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: error,
+      msg: "Internal Server Error, while deleting blog tracker",
+    });
+  }
+};

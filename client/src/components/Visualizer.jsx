@@ -15,6 +15,7 @@ import Modal from "@mui/material/Modal";
 import { TypeAnimation } from "react-type-animation";
 import Skeleton from "@mui/material/Skeleton";
 import { ContextProvider } from "../config/Context";
+import toast from "react-hot-toast";
 
 ChartJS.register(ArcElement, Tip, Legend);
 
@@ -34,11 +35,9 @@ const Visualizer = ({ data }) => {
     notif,
   } = data;
 
-  const { ytLoading, setYtloading } = useContext(ContextProvider);
-  const [open, setOpen] = React.useState(false);
-  const [loading, setLoading] = React.useState(true);
-  const [checked, setChecked] = React.useState(notif);
-
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [checked, setChecked] = useState(notif);
   const handleCheckChange = (event) => {
     setChecked(event.target.checked);
   };
@@ -51,7 +50,10 @@ const Visualizer = ({ data }) => {
   }, [open]);
 
   const handleOpen = () => {
-    setOpen(true);
+    toast.success("Summary generated");
+    setTimeout(() => {
+      setOpen(true);
+    }, 300);
   };
   const handleClose = () => setOpen(false);
 
@@ -138,15 +140,7 @@ const Visualizer = ({ data }) => {
                 </div>
               </div>
               <div className={styles.btn_right}>
-                <Tooltip
-                  title={
-                    type === "yt"
-                      ? "Summarize your Youtube Video in Just one click"
-                      : "Summarize your Blog in Just one click"
-                  }
-                  placement="bottom"
-                  arrow
-                >
+                <Tooltip title={"Generate Summary"} placement="bottom" arrow>
                   <div className={styles.summarize} onClick={handleOpen}>
                     <IconButton aria-label="summarize" size="small">
                       <PiMagicWandFill color={color} />
@@ -171,6 +165,7 @@ const Visualizer = ({ data }) => {
                       sx={{
                         marginLeft: "10px",
                         color: "#f5f5f5",
+                        fontFamily: "poppins",
                       }}
                     />
                   </div>

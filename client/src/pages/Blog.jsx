@@ -30,14 +30,7 @@ const Blog = () => {
   useEffect(() => {
     const getHistory = async () => {
       try {
-        const res = await axios.get(`user/getblogHistory/${user_id}`, {
-          onDownloadProgress: (progressEvent) => {
-            const progress = Math.round(
-              (progressEvent.loaded / progressEvent.total) * 100
-            );
-            console.log(progress);
-          },
-        });
+        const res = await axios.get(`user/getblogHistory/${user_id}`);
         setblogHistory(res.data.history);
       } catch (error) {
         console.log(error);

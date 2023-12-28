@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Visualizer from "../components/Visualizer";
 import SearchBox from "../components/SearchBox";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ContextProvider } from "../config/Context";
 import axios from "../config/axios.js";
+import toast from "react-hot-toast";
 
 const BlogDetail = () => {
+  const navigate = useNavigate();
   const [search, setSearch] = React.useState("");
   const [contentLoading, setcontentLoading] = React.useState(true);
   const { user, setUser } = React.useContext(ContextProvider);
@@ -36,9 +38,12 @@ const BlogDetail = () => {
           }
         );
         setDetails(res.data.data);
+        toast.success("Here we go with your insghts ! 🚀");
         setcontentLoading(false);
       } catch (error) {
         console.log("Error fecting data");
+        navigate("/app/yt");
+        toast.success("Unable to load the insights !");
       }
     };
     fetchData();
@@ -55,7 +60,7 @@ const BlogDetail = () => {
           details?.insights?.neutral,
           details?.insights?.hate,
         ],
-        backgroundColor: ["#f96f10", "#3093ee", "#994abe", "#00b747"],
+        backgroundColor: [" #00b747", "#3093ee", "#994abe", "#f96f10"],
         hoverOffset: 4,
         borderColor: "#1B1B1B",
         borderWidth: 2,
@@ -82,7 +87,7 @@ const BlogDetail = () => {
     ],
   };
   const data = {
-    type: "yt",
+    type: "blog",
     comment_data,
     overall_data,
     thumbnail: details?.details?.thumbnail,

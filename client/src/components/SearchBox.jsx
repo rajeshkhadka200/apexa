@@ -4,7 +4,6 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { BsSearch } from "react-icons/bs";
 import { styled } from "@mui/material/styles";
-import { NavLink } from "react-router-dom";
 
 const SearchBox = ({ search, onSearch, handleSearch, type }) => {
   const SearchButton = styled(Button)({
