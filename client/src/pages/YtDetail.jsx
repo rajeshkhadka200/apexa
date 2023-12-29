@@ -110,17 +110,7 @@ const YtDetail = () => {
     return (
       <>
         <div className="containerloader">
-          <div class="lds-grid">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+          <div class="loader"></div>
         </div>
       </>
     );
