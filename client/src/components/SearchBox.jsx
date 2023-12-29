@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { BsSearch } from "react-icons/bs";
 import { styled } from "@mui/material/styles";
+import { RiAiGenerate } from "react-icons/ri";
 
 const SearchBox = ({ search, onSearch, handleSearch, type }) => {
   const SearchButton = styled(Button)({
@@ -29,7 +30,13 @@ const SearchBox = ({ search, onSearch, handleSearch, type }) => {
       <div className={styles.search_con}>
         <TextField
           placeholder={
-            type === "yt" ? "Enter Youtube Video URL" : "Enter Blog URL"
+            type === "blog"
+              ? "Please enter Blog URL"
+              : type === "image"
+              ? "Please enter Image details"
+              : type === "yt"
+              ? "Please enter Youtube Video URL"
+              : ""
           }
           variant="outlined"
           type="search"
@@ -38,6 +45,7 @@ const SearchBox = ({ search, onSearch, handleSearch, type }) => {
           disabled={type === "detail" ? true : false}
           hiddenLabel
           sx={{
+            color: "red",
             height: "50px",
             width: "80%",
             backgroundColor: "#050505",
@@ -72,7 +80,15 @@ const SearchBox = ({ search, onSearch, handleSearch, type }) => {
             },
           }}
         >
-          <BsSearch />
+          {type === "blog" ? (
+            <BsSearch />
+          ) : type === "image" ? (
+            <RiAiGenerate />
+          ) : type === "yt" ? (
+            <BsSearch />
+          ) : (
+            ""
+          )}
         </SearchButton>
       </div>
     </>
