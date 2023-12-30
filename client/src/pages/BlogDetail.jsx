@@ -10,7 +10,7 @@ const BlogDetail = () => {
   const navigate = useNavigate();
   const [search, setSearch] = React.useState("");
   const [contentLoading, setcontentLoading] = React.useState(true);
-  const { user, setUser } = React.useContext(ContextProvider);
+  const { user } = React.useContext(ContextProvider);
   const [details, setDetails] = React.useState();
 
   const handleSearch = (e) => {
@@ -20,6 +20,7 @@ const BlogDetail = () => {
   const onSearch = () => {};
 
   const { state } = useLocation();
+  console.log(state);
   const link = state?.search;
 
   useEffect(() => {
@@ -43,7 +44,6 @@ const BlogDetail = () => {
         }
         setcontentLoading(false);
       } catch (error) {
-        console.log(error);
         if (error.response.status === 400) {
           toast.error("The Blog doesnot exits anywhere.");
           navigate("/app/yt");
@@ -120,10 +120,10 @@ const BlogDetail = () => {
   return (
     <>
       <SearchBox
-        search={search}
+        search={link}
         handleSearch={handleSearch}
         onSearch={onSearch}
-        type={data.type}
+        type={"detail"}
       />
       <Visualizer
         handleSearch={handleSearch}

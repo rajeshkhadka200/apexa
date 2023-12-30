@@ -28,7 +28,6 @@ const YtDetail = () => {
           {
             headers: {
               "Content-Type": "application/json",
-              "Accept-Encoding": "gzip",
             },
           }
         );

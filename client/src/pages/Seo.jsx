@@ -36,7 +36,7 @@ const Seo = () => {
                     color: "#d2d2d2a6",
                     outline: "none",
                     "& .MuiOutlinedInput-notchedOutline": {
-                      border: "1.5px solid #2d2d2d52",
+                      border: "2px solid #2d2d2d52",
                     },
                     "&:hover": {
                       "& .MuiOutlinedInput-notchedOutline": {
