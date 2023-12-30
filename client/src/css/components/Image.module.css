@@ -1,37 +1,57 @@
-.imgContainer {
-  height: calc(450px - 100px);
+.container {
+  height: 450px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
+  gap: 35px;
   flex-direction: column;
-  gap: 30px;
 }
-
+.searchBox {
+  width: 60%;
+  display: flex;
+  gap: 10px;
+}
+.searchBox input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  padding: 10px 14px;
+  color: var(--gray-text);
+  border-radius: 7px;
+  outline: 1px solid var(--grayish);
+  background: #050505;
+  height: 50px;
+}
+.searchBox button {
+  background: var(--purple-2);
+  padding: 10px 20px;
+  border-radius: 50vw;
+}
 .imgBox {
   height: 200px;
   width: 350px;
-  background: var(--bg1);
-  border-radius: 7px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 10px;
-}
-.imgBox p {
-  margin: 0;
-  color: var(--gray-text);
 }
 .imgBox img {
   height: 100%;
   width: 100%;
   border-radius: 7px;
   outline: 2px dashed var(--grayish);
+  object-fit: cover;
+}
+.btnContainer {
+  display: flex;
+  gap: 15px;
+}
+.btnContainer button {
+  padding: 7px 20px;
+  border-radius: 50vw;
 }
 
-.imgContainer button {
-  padding: 10px 18px;
-  background: var(--purple-2);
-  border-radius: 50vw;
+.btnContainer .download {
+  background: var(--purple-1);
+}
+
+.btnContainer .reset {
+  background: rgba(255, 0, 0, 0.28);
 }
