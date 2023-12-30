@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../css/components/History.module.css";
 import { AiOutlineClose } from "react-icons/ai";
 import IconButton from "@mui/material/IconButton";

@@ -2,14 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import SearchBox from "../components/SearchBox";
 import { useNavigate } from "react-router-dom";
 import axios from "../config/axios.js";
-import { ContextProvider } from "../config/Context.jsx";
 import YTHistory from "../components/YTHistory.jsx";
+import CircularProgress from "@mui/material/CircularProgress";
+import toast from "react-hot-toast";
+import { MdOutlineBrowserNotSupported } from "react-icons/md";
 
 const Dashboard = () => {
-  const [search, setSearch] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
-
-  const { user } = useContext(ContextProvider);
+  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const handleSearch = (e) => {
@@ -40,13 +40,23 @@ const Dashboard = () => {
   //  request for the history performed by loged in user
   const [ytHisory, setYtHistory] = useState();
   const user_id = localStorage.getItem("user_id");
+  const [isEmpty, setisEmpty] = useState();
   useEffect(() => {
+    setLoading(true);
     const getHistory = async () => {
       try {
         const res = await axios.get(`user/getytHistory/${user_id}`);
-        setYtHistory(res.data.history);
+        if (res.status === 200) {
+          setYtHistory(res.data.history);
+        }
+        if (res.status === 204) {
+          setisEmpty(true);
+        }
+
+        setLoading(false);
       } catch (error) {
-        console.log("Error fetching data");
+        setLoading(false);
+        toast.error("Unable to get the tracked videos.");
       }
     };
     getHistory();
@@ -60,7 +70,42 @@ const Dashboard = () => {
         onSearch={onSearch}
         type={"yt"}
       />
-      <YTHistory data={ytHisory} />
+      {loading ? (
+        <div
+          style={{
+            height: "calc(450px - 100px)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <CircularProgress size={30} color="primary" />
+        </div>
+      ) : isEmpty ? (
+        <div
+          style={{
+            color: "#d2d2d2a6",
+            height: "calc(450px - 100px)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            gap: "10px",
+          }}
+        >
+          <MdOutlineBrowserNotSupported color="grey" size={35} />
+          <span
+            style={{
+              maxWidth: "250px",
+              textAlign: "center",
+            }}
+          >
+            You havent tracked any youtube comments previously.
+          </span>
+        </div>
+      ) : (
+        <YTHistory data={ytHisory} />
+      )}
     </>
   );
 };

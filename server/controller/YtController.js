@@ -1,6 +1,5 @@
 import User from "../model/user.schema.js";
 import Yt from "../model/yt.schema.js";
-import MindsDB from "mindsdb-js-sdk";
 import {
   getComments,
   getPercentage,
@@ -12,15 +11,18 @@ import {
 export const getYtData = async (req, res) => {
   try {
     const { video_id, user_id } = req.body;
-    console.log("Video id: ", video_id);
-    console.log("User id: ", user_id);
-    // const user_id = "60b9b6f0c9b0c9b9e0a1a1a1";
-    // const video_id = "bqjmvJFHGbw";
-
     const ytData = await Yt.findOne({ "details.video_id": video_id });
-
+    console.log(ytData);
     const comments = await getComments(video_id);
     const videos = await getVideoData(video_id);
+
+    if (comments.rows.length === 0) {
+      return res.status(204).json({
+        error: false,
+        msg: "We could not found any commens in this yt video",
+      });
+    }
+
     if (ytData) {
       console.log("Video id exist in DB");
       if (comments.rows.length > ytData.prevComment) {

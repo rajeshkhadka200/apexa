@@ -28,19 +28,23 @@ const YtDetail = () => {
           {
             headers: {
               "Content-Type": "application/json",
+              "Accept-Encoding": "gzip",
             },
           }
         );
-        setDetails(res.data.data);
-        toast.success("Here we go with your insghts ! 🚀");
+        if (res.status === 200) {
+          setDetails(res.data.data);
+          toast.success("Here we go with your insghts ! 🚀");
+        }
+        if (res.status === 204) {
+          toast.error("This video doesnot contains any comments.");
+          navigate("/app/yt");
+        }
         setcontentLoading(false);
       } catch (error) {
-        if (error.status === 500) {
-          console.log(error);
-          setYtloading(false);
-          navigate("/app/yt");
-          toast.error("Unable to load the insights");
-        }
+        setYtloading(false);
+        navigate("/app/yt");
+        toast.error("Unable to load the insights");
       }
     };
     fetchData();

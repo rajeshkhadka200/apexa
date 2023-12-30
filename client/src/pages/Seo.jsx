@@ -25,7 +25,7 @@ const Seo = () => {
                   value={hashtag}
                   onChange={handleChange}
                   sx={{
-                    fontWeight : "200",
+                    fontWeight: "200",
                     fontFamily: " Poppins, sans-serif",
                     borderRadius: "7px",
                     background: "#050505",

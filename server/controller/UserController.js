@@ -41,41 +41,40 @@ export const generateYtHistory = async (req, res) => {
   const { user_id } = req.params;
   try {
     const ytHistory = await Yt.find({ user_id });
-    if (ytHistory.length > 0) {
-      return res.status(200).json({
+    if (ytHistory.length === 0) {
+      return res.status(204).json({
         error: false,
-        msg: "YT history got",
-        history: ytHistory,
+        msg: "You havent tracked any youtube videos.",
       });
     }
-    return res.status(404).json({
+    return res.status(200).json({
       error: false,
-      msg: "Unble to get Youtube History",
+      msg: "YT history got",
+      history: ytHistory,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       error: true,
       msg: "Internal server Error",
     });
   }
 };
-//  generate yt history
+//  generate blog history
 export const generateBolgHistory = async (req, res) => {
   const { user_id } = req.params;
   try {
     const blogHistory = await blog.find({ user_id });
 
-    if (blogHistory.length > 0) {
-      return res.status(200).json({
+    if (blogHistory.length === 0) {
+      return res.status(204).json({
         error: false,
-        msg: "Blog history got",
-        history: blogHistory,
+        msg: "You havent tracked any blogs.",
       });
     }
-    return res.status(404).json({
+    return res.status(200).json({
       error: false,
-      msg: "Unble to get Blog History",
+      msg: "Blog history got",
+      history: blogHistory,
     });
   } catch (error) {
     console.log(error);
