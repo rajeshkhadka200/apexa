@@ -8,10 +8,9 @@ import { useGoogleLogin } from "react-google-login";
 import axios from "../config/axios.js";
 import { ContextProvider } from "../config/Context";
 import IconButton from "@mui/material/IconButton";
+import toast from "react-hot-toast";
 const Navbar = () => {
   const { user, setUser } = useContext(ContextProvider);
-  // const [] = usr;
-
   const accessToken = localStorage.getItem("access");
   const refreshToken = localStorage.getItem("refresh");
 
@@ -29,18 +28,18 @@ const Navbar = () => {
   }, []);
 
   const onFailure = (err) => {
-    alert("Faliure");
+    toast.error("Unable to login.");
+    console.log(err);
   };
   const onSuccess = async (data) => {
     const { profileObj } = data;
-
     const { email, name, imageUrl } = profileObj;
     try {
       const res = await axios.post("/auth", { email, name, imageUrl });
       const { accessToken, refreshToken, msg } = res.data;
       localStorage.setItem("access", accessToken);
       localStorage.setItem("refresh", refreshToken);
-      alert(msg);
+      toast.success("User Loged in Successfully.");
       window.location.href = "/app/yt";
     } catch (error) {
       console.log("Error while", error);

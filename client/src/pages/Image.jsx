@@ -3,6 +3,10 @@ import styles from "../css/components/Image.module.css";
 import { RiAiGenerate } from "react-icons/ri";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
+import axios from "../config/axios.js";
+import toast from "react-hot-toast";
+import CircularProgress from "@mui/material/CircularProgress";
+import { saveAs } from "file-saver";
 
 const Image = () => {
   const SearchButton = styled(Button)({
@@ -22,37 +26,62 @@ const Image = () => {
       boxShadow: "none",
     },
   });
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
 
-  const [generatedImg, setGeneratedImg] = useState({
-    status: true,
-    id: 56213512,
-    imgUrl:
-      "https://cdn.pixabay.com/photo/2023/10/24/16/19/evening-sky-8338559_1280.jpg",
-  });
+  const [generatedImg, setGeneratedImg] = useState();
+  const [loading, setLoading] = useState(false);
 
-  const generateImage = async () => {};
-
-  const resetImage = async () => {
-    setGeneratedImg({
-      status: false,
-      id: "",
-      imgUrl: "",
-    });
+  const generateImage = async () => {
+    try {
+      if (search === "") {
+        toast.error("Please write some prompt");
+        return;
+      }
+      setLoading(true);
+      setGeneratedImg("");
+      const res = await axios.post(
+        `/image`,
+        {
+          user_input: search,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setGeneratedImg(res.data);
+      setLoading(false);
+      toast.success("Apexa generated your image. 👏");
+    } catch (error) {
+      toast.error("We are unable to generate your image");
+      console.log(error);
+    }
   };
+  const downloadImage = async () => {};
 
   return (
     <>
       <div className={styles.container}>
         <div className={styles.searchBox}>
-          <input type="text" placeholder="Enter the image description" />
+          <input
+            style={{
+              cursor: loading === true && "not-allowed",
+            }}
+            type="text"
+            disabled={loading === true ? true : false}
+            placeholder="Enter the image description"
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+          />
           <SearchButton
             component="label"
             variant="contained"
             onClick={generateImage}
             sx={{
               //chnage the cursor to disable
-              // cursor: type === "detail" && "not-allowed",
+              cursor: loading === true && "not-allowed",
               "&:hover": {
                 backgroundColor:
                   search === "" ? "#050505" : "rgba(39, 39, 39, 0.2)",
@@ -62,15 +91,15 @@ const Image = () => {
             <RiAiGenerate />
           </SearchButton>
         </div>
-        {generatedImg.status === true && (
+        {loading && <CircularProgress size={25} color="secondary" />}
+        {generatedImg && (
           <>
             <div className={styles.imgBox}>
               <img src={generatedImg.imgUrl} alt="image" />
             </div>
             <div className={styles.btnContainer}>
-              <button className={styles.download}>Download</button>
-              <button onClick={resetImage} className={styles.reset}>
-                Reset
+              <button onClick={downloadImage} className={styles.download}>
+                Download
               </button>
             </div>
           </>

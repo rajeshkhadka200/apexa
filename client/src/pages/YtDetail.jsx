@@ -13,7 +13,6 @@ const YtDetail = () => {
   const { user } = useContext(ContextProvider);
 
   const navigate = useNavigate();
-  // const [user, setUser] = usr;
 
   //get the id from the route url
   const { id } = useParams();
@@ -45,7 +44,7 @@ const YtDetail = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   const handleSearch = (e) => {
     setSearch(e.target.value);

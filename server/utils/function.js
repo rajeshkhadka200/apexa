@@ -70,7 +70,7 @@ export const getSentiment = async (initial, comments, app) => {
 // Summary Processing
 export const getSummary = async (data, app) => {
   if (app === "youtube") {
-    console.log(data)
+    console.log(data);
     const transcript = data.rows[0]?.transcript;
     const transcriptArray = JSON.parse(transcript);
     const joinedText = transcriptArray.map((item) => item.text).join(" ");
@@ -139,4 +139,12 @@ export const removeMarkdownSyntax = (data) => {
     .replace(regex10, "");
 
   return result;
+};
+
+export const getImageURL = async (userPromt) => {
+  const url = await MindsDB.default.SQL.runQuery(
+    `SELECT * FROM mindsdb.image_generator
+       WHERE user_input = '${userPromt}';`
+  );
+  return url;
 };

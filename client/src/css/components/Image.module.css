@@ -3,12 +3,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: #000;
   gap: 35px;
   flex-direction: column;
 }
 .searchBox {
-  width: 60%;
+  width: 65%;
   display: flex;
   gap: 10px;
 }
@@ -19,16 +19,11 @@
   padding: 10px 14px;
   color: #d2d2d2a6;
   border-radius: 7px;
-  outline: 1px solid var(--grayish);
+  outline: 1.5px solid var(--grayish);
   background: #050505;
   height: 50px;
 }
 
-.searchBox button {
-  background: var(--purple-2);
-  padding: 10px 20px;
-  border-radius: 50vw;
-}
 .imgBox {
   height: 200px;
   width: 350px;
@@ -36,9 +31,10 @@
 .imgBox img {
   height: 100%;
   width: 100%;
-  border-radius: 7px;
+  border-radius: 10px;
   outline: 2px dashed var(--grayish);
   object-fit: cover;
+  padding: 10px;
 }
 .btnContainer {
   display: flex;
@@ -46,13 +42,9 @@
 }
 .btnContainer button {
   padding: 7px 20px;
-  border-radius: 50vw;
+  border-radius: 7px;
 }
 
 .btnContainer .download {
-  background: var(--purple-1);
-}
-
-.btnContainer .reset {
-  background: rgba(255, 0, 0, 0.28);
+  background: #fff;
 }
