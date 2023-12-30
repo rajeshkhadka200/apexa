@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import axios from "../config/axios.js";
 import toast from "react-hot-toast";
 import CircularProgress from "@mui/material/CircularProgress";
-import { saveAs } from "file-saver";
 
 const Image = () => {
   const SearchButton = styled(Button)({
@@ -56,9 +55,9 @@ const Image = () => {
     } catch (error) {
       toast.error("We are unable to generate your image");
       console.log(error);
+      setLoading(false);
     }
   };
-  const downloadImage = async () => {};
 
   return (
     <>
@@ -98,9 +97,9 @@ const Image = () => {
               <img src={generatedImg.imgUrl} alt="image" />
             </div>
             <div className={styles.btnContainer}>
-              <button onClick={downloadImage} className={styles.download}>
-                Download
-              </button>
+              <a href={generatedImg.imgUrl} target="_blank" download>
+                <button className={styles.download}>Download</button>
+              </a>
             </div>
           </>
         )}
