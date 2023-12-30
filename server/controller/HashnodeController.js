@@ -16,7 +16,6 @@ export const getBlog = async (req, res) => {
   const urlObject = new URL(blogURL);
   const hostPart = urlObject.host;
   const slugPart = urlObject.pathname.replace(/^\/+/, "");
-
   try {
     let response = await fetch("https://gql.hashnode.com", {
       method: "POST",
@@ -63,6 +62,13 @@ export const getBlog = async (req, res) => {
 
     let result = await response.json();
     let comments = result.data.publication.post.comments.edges;
+    console.log(comments);
+    console.log(comments.length);
+    if (comments.length === 0) {
+      return res.status(204).json({
+        msg: "No commnts to process..",
+      });
+    }
     let markdown = result.data.publication.post.content.markdown;
     let title = result.data.publication.post.title;
     let creatorName = result.data.publication.title;
@@ -202,6 +208,10 @@ export const getBlog = async (req, res) => {
       });
     }
   } catch (error) {
+    res.status(500).json({
+      error: true,
+      msg: "Internal Server Error",
+    });
     console.log(error);
   }
 };

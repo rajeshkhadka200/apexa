@@ -42,11 +42,15 @@ const BlogDetail = () => {
           setDetails(res.data.data);
           toast.success("Here we go with your insghts ! 🚀");
         }
+        if (res.status === 204) {
+          toast.error("We can not process blogs with 0 comments");
+          navigate("/app/blog");
+        }
         setcontentLoading(false);
       } catch (error) {
         if (error.response.status === 400) {
           toast.error("The Blog doesnot exits anywhere.");
-          navigate("/app/yt");
+          navigate("/app/blog");
           return;
         }
         toast.error("Unable to process the blog.");
