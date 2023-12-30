@@ -5,8 +5,20 @@
 .header {
   display: flex;
   align-items: center;
-  padding: 30px 30px;
+  padding: 25px 30px;
   gap: 20px;
+}
+.middle input {
+  border: 0;
+  outline: 0;
+  padding: 10px 14px;
+  color: #d2d2d2a6;
+  border-radius: 7px;
+  outline: 1.5px solid var(--grayish);
+  background: #050505;
+  height: 50px;
+  width: 100%;
+  font-weight: 400;
 }
 .header .middle {
   flex: 1;
@@ -14,17 +26,7 @@
 
 .header .right button {
   background: #00b747;
-  padding: 12px 30px;
-  border-radius: 100vw;
-}
-
-.lower_box {
-  padding: 30px 20px;
-  color: var(--text);
-}
-.indi_box {
-  padding: 10px 10px;
-  background: #1e1f1f;
+  padding: 0 30px;
   border-radius: 7px;
-  margin-bottom: 20px;
+  height: 49px;
 }

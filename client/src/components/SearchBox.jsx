@@ -45,6 +45,10 @@ const SearchBox = ({ search, onSearch, handleSearch, type }) => {
           disabled={type === "detail" ? true : false}
           hiddenLabel
           sx={{
+            input: {
+              fontFamily: " Poppins, sans-serif",
+              fontWeight: "200",
+            },
             height: "50px",
             width: "80%",
             backgroundColor: "#050505",
