@@ -17,12 +17,13 @@
   border: 0;
   outline: 0;
   padding: 10px 14px;
-  color: var(--gray-text);
+  color: #d2d2d2a6;
   border-radius: 7px;
   outline: 1px solid var(--grayish);
   background: #050505;
   height: 50px;
 }
+
 .searchBox button {
   background: var(--purple-2);
   padding: 10px 20px;

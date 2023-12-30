@@ -45,7 +45,6 @@ const SearchBox = ({ search, onSearch, handleSearch, type }) => {
           disabled={type === "detail" ? true : false}
           hiddenLabel
           sx={{
-            color: "red",
             height: "50px",
             width: "80%",
             backgroundColor: "#050505",
@@ -53,10 +52,11 @@ const SearchBox = ({ search, onSearch, handleSearch, type }) => {
             borderRadius: "10px 0px 0px 10px",
             cursor: type === "detail" && "not-allowed",
             "& .MuiInputBase-input": {
-              color: "#575a60a6",
+              color: "#d2d2d2a6",
               fontSize: "17px",
               padding: "11px 15px",
             },
+
             "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
               {
                 border: "none",
