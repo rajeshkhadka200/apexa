@@ -17,14 +17,14 @@ const Dashboard = () => {
   };
   const onSearch = () => {
     if (search === "") {
-      alert("Please enter a youtube link");
+      toast.error("Please enter a youtube link");
       return;
     }
     let youtubePattern =
       /^(https?:\/\/)?(www\.)?(youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
 
     if (!youtubePattern.test(search)) {
-      alert("Please enter a valid youtube url");
+      toast.error("Please enter a Hashnode link");
       return;
     }
 

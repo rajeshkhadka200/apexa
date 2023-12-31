@@ -235,3 +235,24 @@ export const deleteblogHistory = async (req, res) => {
     });
   }
 };
+
+export const toggleNotification = async (req, res) => {
+  const { notif, blog_url } = req.body;
+
+  try {
+    const result = await Blog.findOneAndUpdate(
+      { "details.blog_url": blog_url },
+      { $set: { notif: notif } },
+      { new: true }
+    );
+
+    res.status(200).json({
+      result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      msg: "Internal server error",
+      error,
+    });
+  }
+};

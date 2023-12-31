@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../css/components/Visualizer.module.css";
-import SearchBox from "./SearchBox";
 import { BiCommentDetail } from "react-icons/bi";
 import { AiFillLike } from "react-icons/ai";
 import IconButton from "@mui/material/IconButton";
@@ -14,8 +13,8 @@ import { Doughnut } from "react-chartjs-2";
 import Modal from "@mui/material/Modal";
 import { TypeAnimation } from "react-type-animation";
 import Skeleton from "@mui/material/Skeleton";
-import { ContextProvider } from "../config/Context";
 import toast from "react-hot-toast";
+import axios from "../config/axios.js";
 
 ChartJS.register(ArcElement, Tip, Legend);
 
@@ -33,13 +32,71 @@ const Visualizer = ({ data }) => {
     color,
     summary,
     notif,
+    video_id,
+    blog_url,
   } = data;
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [checked, setChecked] = useState(notif);
-  const handleCheckChange = (event) => {
-    setChecked(event.target.checked);
+  console.log("initials " + notif);
+  console.log("now " + checked);
+  const handleCheckChange = async () => {
+    setChecked(!checked);
+    if (type === "yt") {
+      try {
+        const res = await axios.patch(
+          `/yt/${video_id}`,
+          {
+            notif: checked,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (checked) {
+          toast.success("Notification disabled");
+        } else {
+          toast.success("Notification enabled.");
+        }
+      } catch (error) {
+        if (checked) {
+          toast.error("Unable disable Notification for this video.");
+        } else {
+          toast.error("Unable enable Notification for this video.");
+        }
+      }
+    } else {
+      try {
+        const res = await axios.patch(
+          `/hashnode/updateNotif`,
+          {
+            notif: checked,
+            blog_url,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        if (checked) {
+          toast.success("Notification disabled.");
+        } else {
+          toast.success("Notification enabled.");
+        }
+      } catch (error) {
+        console.log(error);
+        if (checked) {
+          toast.error("Unable disable Notification for this Blog.");
+        } else {
+          toast.error("Unable enable Notification for this Blog.");
+        }
+      }
+    }
   };
   //test loading logic [P.S. This is just for testing and will be removed later]
   useEffect(() => {
@@ -149,7 +206,7 @@ const Visualizer = ({ data }) => {
                   </div>
                 </Tooltip>
                 <Tooltip
-                  title={"Turn On to notify about harsh comments in your email"}
+                  title={"Enable email notifications for harsh comments."}
                   placement="bottom"
                   arrow
                 >

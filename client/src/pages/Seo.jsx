@@ -4,13 +4,20 @@ import Box from "@mui/material/Box";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import toast from "react-hot-toast";
 const Seo = () => {
   const [hashtag, sethashTag] = useState("technology");
+  const [desc, setDesc] = useState();
 
   const handleChange = (event) => {
     sethashTag(event.target.value);
   };
-  console.log(hashtag);
+
+  const processUserPref = async () => {
+    if (hashtag === "" || desc === "") {
+      return toast.error("Please add hashtag and description");
+    }
+  };
 
   return (
     <>
@@ -53,10 +60,16 @@ const Seo = () => {
             </Box>
           </div>
           <div className={styles.middle}>
-            <input type="text" placeholder="Give some description " />
+            <input
+              onChange={(e) => {
+                setDesc(e.target.value);
+              }}
+              type="text"
+              placeholder="Give some description "
+            />
           </div>
           <div className={styles.right}>
-            <button>Process</button>
+            <button onClick={processUserPref}>Process</button>
           </div>
         </div>
       </div>

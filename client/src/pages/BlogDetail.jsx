@@ -109,6 +109,8 @@ const BlogDetail = () => {
     comment: details?.details?.comment,
     color: "#f96f10",
     summary: details?.summary,
+    notif: details?.notif,
+    blog_url: details?.details?.blog_url,
   };
 
   if (contentLoading) {

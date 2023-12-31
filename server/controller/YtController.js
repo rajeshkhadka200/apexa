@@ -178,3 +178,26 @@ export const deleteYTHistory = async (req, res) => {
     });
   }
 };
+
+export const toggleNotification = async (req, res) => {
+  const { video_id } = req.params;
+  const { notif } = req.body;
+  console.log(`notif`, notif);
+
+  try {
+    const result = await Yt.findOneAndUpdate(
+      { "details.video_id": video_id },
+      { $set: { notif: notif } },
+      { new: true }
+    );
+
+    res.status(200).json({
+      result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      msg: "Internal server error",
+      error,
+    });
+  }
+};

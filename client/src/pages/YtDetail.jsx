@@ -41,7 +41,7 @@ const YtDetail = () => {
         }
         setcontentLoading(false);
       } catch (error) {
-        setYtloading(false);
+        setcontentLoading(false);
         navigate("/app/yt");
         toast.error("Unable to load the insights");
       }
@@ -106,6 +106,8 @@ const YtDetail = () => {
     comment: details?.details?.comment,
     color: "#f96f10",
     summary: details?.summary,
+    notif: details?.notif,
+    video_id: details?.details?.video_id,
   };
 
   if (contentLoading) {

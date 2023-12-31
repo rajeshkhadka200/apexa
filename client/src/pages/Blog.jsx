@@ -5,6 +5,7 @@ import axios from "../config/axios";
 import BlogHistory from "../components/BlogHistory";
 import { MdOutlineBrowserNotSupported } from "react-icons/md";
 import CircularProgress from "@mui/material/CircularProgress";
+import toast from "react-hot-toast";
 
 const Blog = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Blog = () => {
   const [search, setSearch] = React.useState("");
   const onSearch = () => {
     if (search === "") {
-      alert("Please enter a Hashnode link");
+      toast.error("Please enter a Hashnode link");
       return;
     }
     const urlObject = new URL(search);
