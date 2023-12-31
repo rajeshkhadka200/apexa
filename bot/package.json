@@ -4,7 +4,12 @@
   "description": "this is the bot that tracks the vulger commnets or hate comments done by the specific user in yt or hashnode blogs.",
   "main": "server.js",
   "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "bot": "node --watch --env-file=config.env index.js"
+  },
   "dependencies": {
+    "mongoose": "^8.0.3",
     "nodemailer": "^6.9.8"
   }
 }
