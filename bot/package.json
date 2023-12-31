@@ -1,0 +1,10 @@
+{
+  "name": "notifier-bot",
+  "version": "1.0.0",
+  "description": "this is the bot that tracks the vulger commnets or hate comments done by the specific user in yt or hashnode blogs.",
+  "main": "server.js",
+  "license": "MIT",
+  "dependencies": {
+    "nodemailer": "^6.9.8"
+  }
+}
