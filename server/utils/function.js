@@ -148,3 +148,5 @@ export const getImageURL = async (userPromt) => {
   );
   return url;
 };
+
+export const saveHarshComment = async () => {};
