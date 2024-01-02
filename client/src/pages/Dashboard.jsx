@@ -24,7 +24,7 @@ const Dashboard = () => {
       /^(https?:\/\/)?(www\.)?(youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
 
     if (!youtubePattern.test(search)) {
-      toast.error("Please enter a Hashnode link");
+      toast.error("Please enter a Youtube link");
       return;
     }
 
@@ -40,12 +40,13 @@ const Dashboard = () => {
   //  request for the history performed by loged in user
   const [ytHisory, setYtHistory] = useState();
   const user_id = localStorage.getItem("user_id");
-  const [isEmpty, setisEmpty] = useState();
+  const [isEmpty, setisEmpty] = useState(false);
   useEffect(() => {
     setLoading(true);
     const getHistory = async () => {
       try {
         const res = await axios.get(`user/getytHistory/${user_id}`);
+        setisEmpty(false);
         if (res.status === 200) {
           setYtHistory(res.data.history);
         }

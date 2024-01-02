@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { HiPaperAirplane } from "react-icons/hi";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { LuLogOut } from "react-icons/lu";
 import style from "../css/components/Navbar.module.css";
 import { gapi } from "gapi-script";
@@ -10,6 +10,7 @@ import { ContextProvider } from "../config/Context";
 import IconButton from "@mui/material/IconButton";
 import toast from "react-hot-toast";
 const Navbar = () => {
+  const navigate = useNavigate();
   const { user, setUser } = useContext(ContextProvider);
   const accessToken = localStorage.getItem("access");
   const refreshToken = localStorage.getItem("refresh");
