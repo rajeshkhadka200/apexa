@@ -29,3 +29,99 @@
   border-radius: 7px;
   height: 49px;
 }
+.lower_box {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px;
+  gap: 20px;
+}
+.content_box {
+  color: var(--gray-text);
+  font-weight: 400;
+  padding: 5px 8px;
+  display: flex;
+  min-height: 100px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s;
+}
+/*make the hover effect*/
+.content_box:hover {
+  background: var(--grayish);
+  scale: 1.01;
+}
+
+.speak_btn {
+  font-size: 20px;
+  color: var(--green-1);
+  background-color: var(--bg1);
+  border-radius: 100%;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid var(--green-1);
+}
+/*make the hover effect and scale up */
+.speak_btn:hover {
+  background: var(--green-1);
+  color: var(--white);
+  scale: 1.1;
+}
+
+.content_box::before,
+.content_box::after,
+.span::before,
+.span::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: transparent;
+  transition: 1s;
+
+  /* -webkit-mix-blend-mode: hue; */
+}
+
+.content_box::before {
+  top: -2px;
+  left: -2px;
+  border-top: 2px solid var(--green-1);
+  border-left: 2px solid var(--green-1);
+}
+.content_box::after {
+  top: -2px;
+  right: -2px;
+  border-top: 2px solid var(--green-1);
+  border-right: 2px solid var(--green-1);
+}
+
+.span::before {
+  bottom: -2px;
+  left: -2px;
+  border-bottom: 2px solid var(--green-1);
+  border-left: 2px solid var(--green-1);
+}
+.span::after {
+  bottom: -2px;
+  right: -2px;
+  border-bottom: 2px solid var(--green-1);
+  border-right: 2px solid var(--green-1);
+}
+
+.content_box:hover::before,
+.content_box:hover::after,
+.content_box:hover .span::before,
+.content_box:hover .span::after {
+  width: calc(180px / 2);
+  height: calc(50px / 2);
+}

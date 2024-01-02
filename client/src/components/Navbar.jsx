@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { HiPaperAirplane } from "react-icons/hi";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation,useNavigate } from "react-router-dom";
 import { LuLogOut } from "react-icons/lu";
 import style from "../css/components/Navbar.module.css";
 import { gapi } from "gapi-script";
@@ -9,10 +9,12 @@ import axios from "../config/axios.js";
 import { ContextProvider } from "../config/Context";
 import IconButton from "@mui/material/IconButton";
 import toast from "react-hot-toast";
+
 const Navbar = () => {
   const { user, setUser } = useContext(ContextProvider);
   const accessToken = localStorage.getItem("access");
   const refreshToken = localStorage.getItem("refresh");
+  const navigate = useNavigate();
 
   // handle googe login
   const clientId = import.meta.env.VITE_CLIENT_ID;
