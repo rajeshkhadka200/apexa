@@ -28,7 +28,7 @@
 
 .imgBox {
   height: 200px;
-  width: 350px;
+  max-width: 350px;
 }
 .imgBox img {
   height: 100%;
@@ -36,7 +36,8 @@
   border-radius: 10px;
   outline: 2px dashed var(--grayish);
   object-fit: cover;
-  padding: 10px;
+  padding: 6px;
+  object-fit: contain;
 }
 .btnContainer {
   display: flex;

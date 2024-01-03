@@ -24,7 +24,6 @@
   --gray-text: #d2d2d2a6;
   --border-active: #4c526f;
 }
- 
 
 html,
 body {
@@ -79,13 +78,13 @@ button {
 .layout {
   width: 70%;
   height: 450px;
+  max-height: 450px;
   background: rgba(48, 48, 48, 0.2);
   border-radius: 10px;
   box-shadow: 0 4px 30px rgba(38, 38, 38, 0.1);
   backdrop-filter: saturate(180%) blur(10px);
   -webkit-backdrop-filter: saturate(180%) blur(5px);
   border: 2px solid var(--grayish);
-  overflow: hidden;
 }
 
 .containerloader {
@@ -148,4 +147,24 @@ button {
   100% {
     transform: rotate(calc(var(--s, 1) * 120deg)) translate(0);
   }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
