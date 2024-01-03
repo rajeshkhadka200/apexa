@@ -1,9 +1,6 @@
 .container {
   color: var(--text);
   border-bottom: 2px solid var(--grayish);
-  position: fixed;
-  top: 0;
-  left: 0;
 }
 .header {
   display: flex;
@@ -33,22 +30,13 @@
   height: 49px;
 }
 .lower_box {
-  display: flex;
-  flex-direction: column;
-  padding: 20px 30px;
-  gap: 20px;
-  overflow-y: scroll;
 }
 .content_box {
   color: var(--gray-text);
   font-weight: 400;
   padding: 5px 8px;
-  display: flex;
   min-height: 100px;
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   cursor: pointer;
-  position: relative;
-  transition: 0.3s;
 }
 /*make the hover effect*/
 .content_box:hover {

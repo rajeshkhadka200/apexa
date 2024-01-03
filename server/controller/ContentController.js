@@ -10,7 +10,6 @@ export const generateContent = async (req, res) => {
    `);
 
     const inputText = content_result.rows[0].content;
-
     const contentIdeas = convertToArray(inputText);
 
     if (contentIdeas?.length === 0) {

@@ -12,6 +12,7 @@ import YtRouter from "./router/YtRouter.js";
 import HashnodeRouter from "./router/HashnodeRouter.js";
 import ImageRouter from "./router/ImageRouter.js";
 import Recomander from "./router/ContentRouter.js";
+
 const app = express();
 
 //MiddleWares
@@ -32,7 +33,8 @@ app.use("/api/hashnode", HashnodeRouter);
 app.use("/api/image", ImageRouter);
 app.use("/api/content", Recomander);
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
   console.log(`🚀 Server is listening on port ${PORT}`);
 });
