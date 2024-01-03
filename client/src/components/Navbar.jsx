@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { HiPaperAirplane } from "react-icons/hi";
-import { NavLink, useLocation,useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { LuLogOut } from "react-icons/lu";
 import style from "../css/components/Navbar.module.css";
 import { gapi } from "gapi-script";

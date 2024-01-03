@@ -6,6 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import toast from "react-hot-toast";
 import { HiOutlineSpeakerWave } from "react-icons/hi2";
+
 const Seo = () => {
   const [hashtag, sethashTag] = useState("technology");
   const [desc, setDesc] = useState();
@@ -55,7 +56,10 @@ const Seo = () => {
                 >
                   <MenuItem value={"technology"}>Technology</MenuItem>
                   <MenuItem value={"gaming"}>Gaming</MenuItem>
-                  <MenuItem value={"recent trend"}>Recent Trend</MenuItem>
+                  <MenuItem value={"health"}>Health</MenuItem>
+                  <MenuItem value={"education"}>Education</MenuItem>
+                  <MenuItem value={"food"}>Sports</MenuItem>
+                  <MenuItem value={"food"}>Food</MenuItem>
                 </Select>
               </FormControl>
             </Box>
@@ -75,6 +79,42 @@ const Seo = () => {
         </div>
       </div>
       <div className={styles.lower_box}>
+        <div className={styles.content_box}>
+          <span className={styles.span}></span>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto
+          ratione iste facere minima, aliquid obcaecati velit perspiciatis odio?
+          Est Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
+          obcaecati amet autem officia, perspiciatis expedita repellat maxime
+          soluta voluptates inventore dolorum, placeat reprehenderit culpa
+          dignissimos odit, ratione ipsum v
+          <div className={styles.speak_btn}>
+            <HiOutlineSpeakerWave />
+          </div>
+        </div>
+        <div className={styles.content_box}>
+          <span className={styles.span}></span>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto
+          ratione iste facere minima, aliquid obcaecati velit perspiciatis odio?
+          Est Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
+          obcaecati amet autem officia, perspiciatis expedita repellat maxime
+          soluta voluptates inventore dolorum, placeat reprehenderit culpa
+          dignissimos odit, ratione ipsum v
+          <div className={styles.speak_btn}>
+            <HiOutlineSpeakerWave />
+          </div>
+        </div>
+        <div className={styles.content_box}>
+          <span className={styles.span}></span>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto
+          ratione iste facere minima, aliquid obcaecati velit perspiciatis odio?
+          Est Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
+          obcaecati amet autem officia, perspiciatis expedita repellat maxime
+          soluta voluptates inventore dolorum, placeat reprehenderit culpa
+          dignissimos odit, ratione ipsum v
+          <div className={styles.speak_btn}>
+            <HiOutlineSpeakerWave />
+          </div>
+        </div>
         <div className={styles.content_box}>
           <span className={styles.span}></span>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto

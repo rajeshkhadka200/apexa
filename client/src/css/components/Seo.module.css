@@ -1,6 +1,9 @@
 .container {
   color: var(--text);
   border-bottom: 2px solid var(--grayish);
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 .header {
   display: flex;
@@ -34,6 +37,7 @@
   flex-direction: column;
   padding: 20px 30px;
   gap: 20px;
+  overflow-y: scroll;
 }
 .content_box {
   color: var(--gray-text);
