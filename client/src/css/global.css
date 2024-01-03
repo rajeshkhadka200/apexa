@@ -78,13 +78,15 @@ button {
 .layout {
   width: 70%;
   height: 450px;
-  max-height: 450px;
+  min-height: 450px;
   background: rgba(48, 48, 48, 0.2);
   border-radius: 10px;
   box-shadow: 0 4px 30px rgba(38, 38, 38, 0.1);
   backdrop-filter: saturate(180%) blur(10px);
   -webkit-backdrop-filter: saturate(180%) blur(5px);
   border: 2px solid var(--grayish);
+  z-index: 1;
+  overflow-y: auto;
 }
 
 .containerloader {
@@ -151,12 +153,12 @@ button {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 3px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--bg3);
 }
 
 /* Handle */

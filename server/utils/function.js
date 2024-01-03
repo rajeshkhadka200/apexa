@@ -152,10 +152,9 @@ export const getImageURL = async (userPromt) => {
 export const saveHarshComment = async () => {};
 
 export const convertToArray = (data) => {
-   const startIndex = data.indexOf("[");
-   const endIndex = data.lastIndexOf("]");
-   const contentIdeasArrayText = data.slice(startIndex, endIndex + 1);
-   const contentIdeasArray = JSON.parse(contentIdeasArrayText);
-
-   return contentIdeasArray;
-}
+  const startIndex = data.indexOf("[");
+  const endIndex = data.lastIndexOf("]");
+  const contentIdeasArrayText = data.slice(startIndex, endIndex + 1);
+  const contentIdeasArray = JSON.parse(contentIdeasArrayText);
+  return contentIdeasArray;
+};

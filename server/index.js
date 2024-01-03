@@ -34,7 +34,6 @@ app.use("/api/image", ImageRouter);
 app.use("/api/content", Recomander);
 
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => {
   console.log(`🚀 Server is listening on port ${PORT}`);
 });

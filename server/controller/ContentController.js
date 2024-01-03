@@ -10,6 +10,7 @@ export const generateContent = async (req, res) => {
    `);
 
     const inputText = content_result.rows[0].content;
+    console.log(inputText);
     const contentIdeas = convertToArray(inputText);
 
     if (contentIdeas?.length === 0) {
@@ -24,6 +25,7 @@ export const generateContent = async (req, res) => {
       content: contentIdeas,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       status: "error",
       message: "Internal Server Error",
