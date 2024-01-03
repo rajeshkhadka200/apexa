@@ -1,44 +1,33 @@
 import MindsDB from "mindsdb-js-sdk";
+import { convertToArray } from "../utils/function.js";
 export const generateContent = async (req, res) => {
-  const { scope, details } = req.params;
-  const content_result = await MindsDB.default.SQL.runQuery(`
-  SELECT content
-  FROM mindsdb.content_generator
-  WHERE genre="${scope}" AND detail= "${details}";
- `);
+  try {
+    const { scope, details } = req.params;
+    const content_result = await MindsDB.default.SQL.runQuery(`
+    SELECT content
+    FROM mindsdb.content_generator
+    WHERE genre="${scope}" AND detail= "${details}";
+   `);
 
-  // const inputText = content_result.rows[0].content;
-  const inputText = `
-  1. Video: "Title of video"
-     - description of the title.
-  
-  2. Reels: "Title of reel"
-     - desc of title
-  
-  3. Blog: "Blog title"
-     - Blog desc
-  
-  4. Social Media Post: "Title of post"
-     - Post desc
-  `;
+    const inputText = content_result.rows[0].content;
 
-  const extractData = (inputText) => {
-    const items = inputText.split(/\n\d+\.\s+/).filter(Boolean);
+    const contentIdeas = convertToArray(inputText);
 
-    const result = items.map((item) => {
-      const [type, rest] = item.split(":");
-      const [title, desc] = rest.split("-").map((str) => str.trim());
+    if (contentIdeas?.length === 0) {
+      return res.status(204).json({
+        status: "error",
+        message: "No content found",
+      });
+    }
 
-      return {
-        type: type.toLowerCase(),
-        title: title.replace(/["']/g, ""),
-        desc: desc.trim(),
-      };
+    res.status(200).json({
+      status: "success",
+      content: contentIdeas,
     });
-
-    return result;
-  };
-
-  const output = extractData(inputText);
-  console.log(output);
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: "Internal Server Error",
+    });
+  }
 };

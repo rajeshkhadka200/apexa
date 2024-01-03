@@ -30,9 +30,9 @@ app.use("/api/user", UserRouter);
 app.use("/api/yt", YtRouter);
 app.use("/api/hashnode", HashnodeRouter);
 app.use("/api/image", ImageRouter);
-app.use("/api/contentRecomand", Recomander);
+app.use("/api/content", Recomander);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`🚀 Server is listening on port ${PORT}`);
 });
