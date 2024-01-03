@@ -76,6 +76,7 @@
   background: var(--green-1);
   color: var(--white);
   scale: 1.1;
+  top: 52%;
 }
 
 .content_box::before,
