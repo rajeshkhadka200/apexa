@@ -1,9 +1,11 @@
 .container {
   color: var(--text);
   border-bottom: 2px solid var(--grayish);
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
+  z-index: 999;
+  background-color: var(--bg3);
 }
 .header {
   display: flex;
@@ -37,7 +39,6 @@
   flex-direction: column;
   padding: 20px 30px;
   gap: 20px;
-  overflow-y: scroll;
 }
 .content_box {
   color: var(--gray-text);
@@ -50,7 +51,6 @@
   position: relative;
   transition: 0.3s;
 }
-/*make the hover effect*/
 .content_box:hover {
   background: var(--grayish);
   scale: 1.01;
