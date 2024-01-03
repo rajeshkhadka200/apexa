@@ -40,17 +40,30 @@
   padding: 20px 30px;
   gap: 25px;
 }
+
 .content_box {
   color: var(--gray-text);
   font-weight: 400;
-  padding: 5px 8px;
+  padding: 8px 10px 8px 20px;
   display: flex;
+  flex-direction: column;
   min-height: 100px;
-  /* box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; */
   cursor: pointer;
   position: relative;
   transition: 0.1s;
   border: 1px solid var(--grayish);
+}
+.content_box .title {
+  font-weight: 600;
+  padding-bottom: 5px;
+  color: var(--white);
+}
+.content_box .title span {
+  text-transform: uppercase;
+}
+.content_box .description {
+  font-weight: 200;
+  color: var(--gray-text);
 }
 .content_box:hover {
   background: var(--grayish);
@@ -75,6 +88,26 @@
   cursor: pointer;
   transition: 0.3s;
   border: 1px solid var(--green-1);
+}
+.content_type_icon {
+  font-size: 20px;
+  color: var(--white);
+  background-color: var(--bg1);
+  border-radius: 100%;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid var(--green-1);
+  background: var(--green-1);
 }
 /*make the hover effect and scale up */
 .speak_btn:hover {

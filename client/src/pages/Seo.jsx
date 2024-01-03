@@ -6,10 +6,18 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import toast from "react-hot-toast";
 import { HiOutlineSpeakerWave } from "react-icons/hi2";
+import { CiVideoOn } from "react-icons/ci";
+import { SiYoutubeshorts } from "react-icons/si";
+import { PiArticle } from "react-icons/pi";
+import { MdPostAdd } from "react-icons/md";
+import axios from "../config/axios.js";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Seo = () => {
   const [hashtag, sethashTag] = useState("technology");
-  const [desc, setDesc] = useState();
+  const [desc, setDesc] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState();
 
   const handleChange = (event) => {
     sethashTag(event.target.value);
@@ -18,6 +26,23 @@ const Seo = () => {
   const processUserPref = async () => {
     if (hashtag === "" || desc === "") {
       return toast.error("Please add hashtag and description");
+    }
+    try {
+      setLoading(true);
+      const res = await axios.get(`/content/${hashtag}/${desc}`);
+      if (res.status === 200) {
+        toast.success("Apexa recommended the content ✅");
+        setLoading(false);
+        setData(res.data.content);
+      }
+      if (res.status === 204) {
+        toast.error("Cnanot recommand conteent with provided information.");
+        setLoading(false);
+      }
+    } catch (error) {
+      setData();
+      setLoading(false);
+      toast.error("Apexa could not recommended the content");
     }
   };
 
@@ -79,54 +104,55 @@ const Seo = () => {
         </div>
       </div>
       <div className={styles.lower_box}>
-        <div className={styles.content_box}>
-          <span className={styles.span}></span>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto
-          ratione iste facere minima, aliquid obcaecati velit perspiciatis odio?
-          Est Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          obcaecati amet autem officia, perspiciatis expedita repellat maxime
-          soluta voluptates inventore dolorum, placeat reprehenderit culpa
-          dignissimos odit, ratione ipsum v
-          <div className={styles.speak_btn}>
-            <HiOutlineSpeakerWave />
+        {loading ? (
+          <div
+            style={{
+              marginTop: "100px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#fff",
+              flexDirection: "column",
+            }}
+          >
+            <CircularProgress
+              size={30}
+              sx={{
+                color: "#00b747",
+              }}
+            />
           </div>
-        </div>
-        <div className={styles.content_box}>
-          <span className={styles.span}></span>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto
-          ratione iste facere minima, aliquid obcaecati velit perspiciatis odio?
-          Est Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          obcaecati amet autem officia, perspiciatis expedita repellat maxime
-          soluta voluptates inventore dolorum, placeat reprehenderit culpa
-          dignissimos odit, ratione ipsum v
-          <div className={styles.speak_btn}>
-            <HiOutlineSpeakerWave />
-          </div>
-        </div>
-        <div className={styles.content_box}>
-          <span className={styles.span}></span>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto
-          ratione iste facere minima, aliquid obcaecati velit perspiciatis odio?
-          Est Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          obcaecati amet autem officia, perspiciatis expedita repellat maxime
-          soluta voluptates inventore dolorum, placeat reprehenderit culpa
-          dignissimos odit, ratione ipsum v
-          <div className={styles.speak_btn}>
-            <HiOutlineSpeakerWave />
-          </div>
-        </div>
-        <div className={styles.content_box}>
-          <span className={styles.span}></span>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto
-          ratione iste facere minima, aliquid obcaecati velit perspiciatis odio?
-          Est Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          obcaecati amet autem officia, perspiciatis expedita repellat maxime
-          soluta voluptates inventore dolorum, placeat reprehenderit culpa
-          dignissimos odit, ratione ipsum v
-          <div className={styles.speak_btn}>
-            <HiOutlineSpeakerWave />
-          </div>
-        </div>
+        ) : (
+          data?.map((item, index) => {
+            return (
+              <>
+                <div className={styles.content_box}>
+                  <span className={styles.span}></span>
+                  <div className={styles.content_type_icon}>
+                    {item.content_type === "video" ? (
+                      <CiVideoOn />
+                    ) : item.content_type === "reels" ? (
+                      <SiYoutubeshorts />
+                    ) : item.content_type === "blog" ? (
+                      <PiArticle />
+                    ) : item.content_type === "social media post" ? (
+                      <MdPostAdd />
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                  <div className={styles.title}>
+                    <span>{item.content_type}</span> : {item.title}
+                  </div>
+                  <div className={styles.description}>{item.description}</div>
+                  <div className={styles.speak_btn}>
+                    <HiOutlineSpeakerWave />
+                  </div>
+                </div>
+              </>
+            );
+          })
+        )}
       </div>
     </>
   );
