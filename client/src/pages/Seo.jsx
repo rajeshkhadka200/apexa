@@ -37,13 +37,13 @@ const Seo = () => {
         setData(res.data.content);
       }
       if (res.status === 204) {
-        toast.error("Cnanot recommand conteent with provided information.");
+        toast.error("Cannot recommand conteent with provided information.");
         setLoading(false);
       }
     } catch (error) {
       setData();
       setLoading(false);
-      toast.error("Apexa could not recommended the content");
+      toast.error("Apexa could not recomand the content");
     }
   };
   const [value, setValue] = useState("Hello please suggest the following.");

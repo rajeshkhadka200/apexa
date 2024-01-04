@@ -8,11 +8,13 @@ const FirstHero = () => {
     <>
       <div className={styles.heroContainer}>
         <h2>
-          Exploring mindsDb & traning the <br /> <span>AI model</span>{" "}
+          YouTube, Blog, Img, Content Magic Unleashed!
+          <br />
+          <span>with Apexa</span>
         </h2>
         <p>
-          The easiest way to manage, build, and ship video/audio experiences on
-          the frontend. Starting with React & Next.js.
+          Unlock the power of MindsDB to turn data into content gold. Create,
+          analyze, and protect your brand seamlessly.
         </p>
         <div className={styles.btnCon}>
           <a target="_blank" href="https://github.com/rajeshkhadka200/apexa">
