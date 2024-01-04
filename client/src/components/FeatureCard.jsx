@@ -32,7 +32,11 @@ const FeatureCard = ({ icon, tag, des, img, c1, c2, i }) => {
                     {tag}
                   </h3>
                   <TypeAnimation
-                    sequence={["dolor sit amtdh.", 1000, "dolor sit ametdh."]}
+                    sequence={[
+                      "Unlock YouTube Insights",
+                      1000,
+                      "Analyze Video Comments.",
+                    ]}
                     wrapper="span"
                     speed={10}
                     style={{
@@ -72,7 +76,7 @@ const FeatureCard = ({ icon, tag, des, img, c1, c2, i }) => {
                     {tag}
                   </h3>
                   <TypeAnimation
-                    sequence={["dolor sit amtdh.", 1000, "dolor sit ametdh."]}
+                    sequence={["Elevate Your Blog Experience", 1000, "dolor sit ametdh."]}
                     wrapper="span"
                     speed={50}
                     style={{

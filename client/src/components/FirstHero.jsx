@@ -8,7 +8,7 @@ const FirstHero = () => {
     <>
       <div className={styles.heroContainer}>
         <h2>
-          YouTube, Blog, Img, Content Magic Unleashed!
+          Easy Analysis, Creative Generation & Smart Recommendations!
           <br />
           <span>with Apexa</span>
         </h2>
