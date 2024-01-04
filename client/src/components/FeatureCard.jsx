@@ -3,7 +3,7 @@ import style from "../css/components/Features.module.css";
 import { TypeAnimation } from "react-type-animation";
 import { GoCpu, GoFileCode, GoRocket, GoZap } from "react-icons/go";
 
-const FeatureCard = ({ icon, tag, des, img, c1, c2, i }) => {
+const FeatureCard = ({ icon, tag, des, img, c1, c2, i, slogan }) => {
   return (
     <>
       <div className={style.features_container}>
@@ -33,11 +33,7 @@ const FeatureCard = ({ icon, tag, des, img, c1, c2, i }) => {
                   </h3>
                   <div className={style.writer}>
                     <TypeAnimation
-                      sequence={[
-                        "Unlock YouTube Insights",
-                        1000,
-                        "Analyze Video Comments.",
-                      ]}
+                      sequence={[slogan, 1000, " "]}
                       wrapper="span"
                       speed={10}
                       style={{
@@ -79,11 +75,7 @@ const FeatureCard = ({ icon, tag, des, img, c1, c2, i }) => {
                   </h3>
                   <div className={style.writer}>
                     <TypeAnimation
-                      sequence={[
-                        "Elevate Your Blog Experience",
-                        1000,
-                        "dolor sit ametdh.",
-                      ]}
+                      sequence={[slogan, 1000, " "]}
                       wrapper="span"
                       speed={50}
                       style={{
