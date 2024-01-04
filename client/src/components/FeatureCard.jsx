@@ -34,7 +34,7 @@ const FeatureCard = ({ icon, tag, des, img, c1, c2, i }) => {
                   <TypeAnimation
                     sequence={["dolor sit amtdh.", 1000, "dolor sit ametdh."]}
                     wrapper="span"
-                    speed={50}
+                    speed={10}
                     style={{
                       fontSize: "2.5rem",
                       display: "inline-block",
