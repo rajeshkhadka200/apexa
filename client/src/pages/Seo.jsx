@@ -12,6 +12,7 @@ import { PiArticle } from "react-icons/pi";
 import { MdPostAdd } from "react-icons/md";
 import axios from "../config/axios.js";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useSpeechSynthesis } from "react-speech-kit";
 
 const Seo = () => {
   const [hashtag, sethashTag] = useState("technology");
@@ -45,7 +46,8 @@ const Seo = () => {
       toast.error("Apexa could not recommended the content");
     }
   };
-
+  const [value, setValue] = useState("Hello please suggest the following.");
+  const { speak } = useSpeechSynthesis();
   return (
     <>
       <div className={styles.container}>
@@ -99,7 +101,15 @@ const Seo = () => {
             />
           </div>
           <div className={styles.right}>
-            <button onClick={processUserPref}>Process</button>
+            <button
+              style={{
+                cursor: loading ? "not-allowed" : "pointer",
+              }}
+              disabled={loading ? true : false}
+              onClick={processUserPref}
+            >
+              Process
+            </button>
           </div>
         </div>
       </div>
@@ -121,6 +131,7 @@ const Seo = () => {
                 color: "#00b747",
               }}
             />
+            <p>Recomanding ...</p>
           </div>
         ) : (
           data?.map((item, index) => {
@@ -145,7 +156,14 @@ const Seo = () => {
                     <span>{item.content_type}</span> : {item.title}
                   </div>
                   <div className={styles.description}>{item.description}</div>
-                  <div className={styles.speak_btn}>
+                  <div
+                    onClick={() =>
+                      speak({
+                        text: item.description,
+                      })
+                    }
+                    className={styles.speak_btn}
+                  >
                     <HiOutlineSpeakerWave />
                   </div>
                 </div>
