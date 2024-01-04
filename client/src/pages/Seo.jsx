@@ -7,12 +7,12 @@ import Select from "@mui/material/Select";
 import toast from "react-hot-toast";
 import { HiOutlineSpeakerWave } from "react-icons/hi2";
 import { CiVideoOn } from "react-icons/ci";
-import { SiYoutubeshorts } from "react-icons/si";
 import { PiArticle } from "react-icons/pi";
 import { MdPostAdd } from "react-icons/md";
 import axios from "../config/axios.js";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useSpeechSynthesis } from "react-speech-kit";
+import { GoZap } from "react-icons/go";
 
 const Seo = () => {
   const [hashtag, sethashTag] = useState("technology");
@@ -143,7 +143,7 @@ const Seo = () => {
                     {item.content_type === "video" ? (
                       <CiVideoOn />
                     ) : item.content_type === "reels" ? (
-                      <SiYoutubeshorts />
+                      <GoZap />
                     ) : item.content_type === "blog" ? (
                       <PiArticle />
                     ) : item.content_type === "social media post" ? (
