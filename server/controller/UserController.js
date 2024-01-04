@@ -59,6 +59,7 @@ export const generateYtHistory = async (req, res) => {
     });
   }
 };
+
 //  generate blog history
 export const generateBolgHistory = async (req, res) => {
   const { user_id } = req.params;

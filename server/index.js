@@ -17,9 +17,8 @@ const app = express();
 
 //MiddleWares
 app.use(express.json());
-app.use(cors("*"));
+app.use(cors("Access-Control-Allow-Origin", "*"));
 app.use(express.urlencoded({ extended: false }));
-app.use(compression());
 
 connectDB();
 connectMindsDB();

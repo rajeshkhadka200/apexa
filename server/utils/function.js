@@ -1,5 +1,5 @@
 import MindsDB from "mindsdb-js-sdk";
-
+import Harsh from "../model/harsh.schema.js";
 export const getPercentage = (sentiment, like_count, view_count) => {
   const appreciation = sentiment.filter((x) => x === "Appreciation").length;
   const hate = sentiment.filter((x) => x === "Hate").length;
@@ -28,7 +28,7 @@ export const getPercentage = (sentiment, like_count, view_count) => {
 };
 
 //Insight Processing
-export const getSentiment = async (initial, comments, app) => {
+export const getSentiment = async (initial, comments, app, user_id) => {
   let sentiment = [];
   const reversedComments = app === "youtube" ? comments.reverse() : comments;
   for (let i = initial; i < reversedComments.length; i += 5) {
@@ -39,11 +39,10 @@ export const getSentiment = async (initial, comments, app) => {
       }
     }
     console.log(comment);
+    
     const sentiment_result = await MindsDB.default.SQL.runQuery(
       `SELECT comment, sentiment FROM mindsdb.comment_analyzer WHERE comment="${comment}";`
     );
-
-    console.log(sentiment_result);
 
     if (sentiment_result.rows[0]?.sentiment !== undefined) {
       const sentimentArray = sentiment_result.rows[0]?.sentiment.split(", ");

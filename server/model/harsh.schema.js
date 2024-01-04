@@ -1,32 +1,19 @@
 import mongoose from "mongoose";
 
 const harshSchema = new mongoose.Schema({
-  userDetails: {
-    userId: {
-      type: String,
-    },
-    userName: {
-      type: String,
-    },
-    userEmail: {
-      type: String,
-    },
+  app: {
+    type: String,
   },
-  contentDetails: {
-    contentType: {
-      type: String,
-    },
-    video_id: {
-      type: String,
-    },
-    blogUrl: {
-      type: String,
-    },
-    comment: {
-      type: String,
-    },
+  trackedBy: {
+    type: String,
+  },
+  username: {
+    type: String,
+  },
+  comment: {
+    type: String,
   },
 });
 
-const harsh = mongoose.model("harsh", harshSchema);
-export default harsh;
+const Harsh = mongoose.model("Harsh", harshSchema);
+export default Harsh;

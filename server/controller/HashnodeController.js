@@ -73,7 +73,7 @@ export const getBlog = async (req, res) => {
     let title = result.data.publication.post.title;
     let creatorName = result.data.publication.title;
     let coverImage = result.data.publication.post.coverImage.url;
-    const blogData = await Blog.findOne({ "details.blog_url": blogURL });
+    const blogData = await Blog.findOne({ user_id: user_id });
     const commentsArray = [];
     comments.forEach((comment) => {
       commentsArray.push({
@@ -89,7 +89,8 @@ export const getBlog = async (req, res) => {
         const sentiment = await getSentiment(
           blogData.prevComment,
           commentsArray,
-          "hashnode"
+          "hashnode",
+          user_id,
         );
 
         console.log("The total no. of new sentiment: ", sentiment.length);
@@ -127,7 +128,7 @@ export const getBlog = async (req, res) => {
 
         //update the data in DB
         const updatedData = await Blog.findOneAndUpdate(
-          { "details.blog_url": blogURL },
+          { user_id: user_id },
           {
             insights: {
               appreciation: newAppreciation,
@@ -158,7 +159,7 @@ export const getBlog = async (req, res) => {
       });
     } else {
       console.log("Processing for new Blog");
-      const sentiment = await getSentiment(0, commentsArray, "hashnode");
+      const sentiment = await getSentiment(0, commentsArray, "hashnode",user_id);
       console.log("The total no. of new sentiment: ", sentiment.length);
       console.log(sentiment);
 

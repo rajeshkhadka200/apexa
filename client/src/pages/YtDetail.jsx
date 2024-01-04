@@ -31,6 +31,7 @@ const YtDetail = () => {
             },
           }
         );
+        console.log(res);
         if (res.status === 200) {
           setDetails(res.data.data);
           toast.success("Here we go with your insghts ! 🚀");
