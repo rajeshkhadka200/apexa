@@ -62,7 +62,7 @@
 }
 .btn2 {
   height: 37px;
-  width: 90px;
+  width: 105px;
   border-radius: 7px;
   background-color: var(--white);
   display: flex;
@@ -71,6 +71,7 @@
   font-weight: 400;
   cursor: pointer;
   transition: 0.2s;
+  gap: 5px;
 }
 .btn1 {
   height: 37px;
@@ -112,4 +113,12 @@
   object-fit: cover;
   outline: 2px solid var(--gradient-color-1);
   cursor: pointer;
+}
+@media only screen and (max-width: 615px) {
+  .btn2 {
+    display: none;
+  }
+  .navbar_wrapper {
+    width: 95%;
+  }
 }

@@ -24,3 +24,16 @@
   color: #ffffff7f;
   text-decoration: underline;
 }
+
+@media only screen and (max-width: 615px) {
+  .foot_con {
+    height: fit-content;
+    width: 100%;
+    flex-direction: column;
+    padding: 20px 0;
+    & > *:first-child,
+    & > *:last-child {
+      margin: 3px 0px;
+    }
+  }
+}

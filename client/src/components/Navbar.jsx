@@ -9,6 +9,7 @@ import axios from "../config/axios.js";
 import { ContextProvider } from "../config/Context";
 import IconButton from "@mui/material/IconButton";
 import toast from "react-hot-toast";
+import { MdLaunch } from "react-icons/md";
 
 const Navbar = () => {
   const { user, setUser } = useContext(ContextProvider);
@@ -111,7 +112,11 @@ const Navbar = () => {
                 <div onClick={signIn} className={style.btn1}>
                   Sign in
                 </div>
-                <div className={style.btn2}>Sign up</div>
+                <a target="_blank" href="https://mindsdb.com/">
+                  <div className={style.btn2}>
+                    Mindsdb <MdLaunch />
+                  </div>
+                </a>
               </>
             )}
           </div>

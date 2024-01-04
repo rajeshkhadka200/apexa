@@ -31,18 +31,24 @@ const FeatureCard = ({ icon, tag, des, img, c1, c2, i }) => {
                   >
                     {tag}
                   </h3>
-                  <TypeAnimation
-                    sequence={["dolor sit amtdh.", 1000, "dolor sit ametdh."]}
-                    wrapper="span"
-                    speed={10}
-                    style={{
-                      fontSize: "2.5rem",
-                      display: "inline-block",
-                      fontWeight: "600",
-                      color: "#fff",
-                    }}
-                    repeat={Infinity}
-                  />
+                  <div className={style.writer}>
+                    <TypeAnimation
+                      sequence={[
+                        "Unlock YouTube Insights",
+                        1000,
+                        "Analyze Video Comments.",
+                      ]}
+                      wrapper="span"
+                      speed={10}
+                      style={{
+                        fontSize: "2.5rem",
+                        display: "inline-block",
+                        fontWeight: "600",
+                        color: "#fff",
+                      }}
+                      repeat={Infinity}
+                    />
+                  </div>
                 </div>
                 <div className={style.f_des}>
                   <p className={style.des}>{des}</p>
@@ -71,18 +77,24 @@ const FeatureCard = ({ icon, tag, des, img, c1, c2, i }) => {
                   >
                     {tag}
                   </h3>
-                  <TypeAnimation
-                    sequence={["dolor sit amtdh.", 1000, "dolor sit ametdh."]}
-                    wrapper="span"
-                    speed={50}
-                    style={{
-                      fontSize: "2.5rem",
-                      display: "inline-block",
-                      fontWeight: "600",
-                      color: "#fff",
-                    }}
-                    repeat={Infinity}
-                  />
+                  <div className={style.writer}>
+                    <TypeAnimation
+                      sequence={[
+                        "Elevate Your Blog Experience",
+                        1000,
+                        "dolor sit ametdh.",
+                      ]}
+                      wrapper="span"
+                      speed={50}
+                      style={{
+                        fontSize: "2.5rem",
+                        display: "inline-block",
+                        fontWeight: "600",
+                        color: "#fff",
+                      }}
+                      repeat={Infinity}
+                    />
+                  </div>
                 </div>
                 <div className={style.f_des}>
                   <p className={style.des}>{des}</p>
