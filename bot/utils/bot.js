@@ -1,4 +1,5 @@
-import { getHarshComments } from "./function.js";
+import { getAppInfo, getHarshComments, getUserInfo } from "./function.js";
+import Harsh from "../model/harsh.schema.js";
 import message from "./message.js";
 import sendEmail from "./sendEmail.js";
 
@@ -18,10 +19,10 @@ const bot = async () => {
       );
 
       const user = await getUserInfo(comment.tracker.user_id);
-      const html = message(user, data);
+      const html = message(user, data , comment);
       const res = await sendEmail(
         user.email,
-        `${comment.type} Comment Detected`,
+        `👋 ${comment.type} Comment Detected`,
         html
       );
       console.log(res.message);

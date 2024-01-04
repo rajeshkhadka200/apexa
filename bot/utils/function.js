@@ -6,29 +6,32 @@ import User from "../model/user.schema.js";
 export const getHarshComments = async () => {
   const comments = await Harsh.find({ status: "pending" });
   let harshComments = [];
-  comments.forEach(async (comment) => {
-    if (comment.app === "yt") {
-      const ytData = await Yt.findOne({
-        $and: [
-          { "tracker.id": comment.tracker.id },
-          { "tracker.user_id": comment.tracker.user_id },
-        ],
-      });
-      if (ytData.notif) {
-        harshComments.push(comment);
+
+  await Promise.all(
+    comments.map(async (comment) => {
+      if (comment.app === "yt") {
+        const ytData = await Yt.findOne({
+          $and: [
+            { "details.video_id": comment.tracker.id },
+            { user_id: comment.tracker.user_id },
+          ],
+        });
+        if (ytData && ytData.notif) {
+          harshComments.push(comment);
+        }
+      } else {
+        const blogData = await Blog.findOne({
+          $and: [
+            { "details.blog_url": comment.tracker.id },
+            { user_id: comment.tracker.user_id },
+          ],
+        });
+        if (blogData && blogData.notif) {
+          harshComments.push(comment);
+        }
       }
-    } else {
-      const blogData = await Blog.findOne({
-        $and: [
-          { "tracker.id": comment.tracker.id },
-          { "tracker.user_id": comment.tracker.user_id },
-        ],
-      });
-      if (blogData.notif) {
-        harshComments.push(comment);
-      }
-    }
-  });
+    })
+  );
 
   return harshComments;
 };
