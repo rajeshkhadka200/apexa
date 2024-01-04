@@ -1,10 +1,9 @@
-import React, { useContext,useEffect } from "react";
-import { Navigate, Outlet,useNavigate } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const NavFoot = () => {
-
   const accessToken = localStorage.getItem("access");
   const navigate = useNavigate();
 
@@ -17,7 +16,7 @@ const NavFoot = () => {
     <>
       <Navbar />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
