@@ -39,10 +39,12 @@ const Visualizer = ({ data }) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [checked, setChecked] = useState(notif);
-  console.log("initials " + notif);
-  console.log("now " + checked);
-  const handleCheckChange = async () => {
-    setChecked(!checked);
+
+  useEffect(() => {
+    updateNotif();
+  }, [checked]);
+
+  const updateNotif = async () => {
     if (type === "yt") {
       try {
         const res = await axios.patch(
@@ -58,15 +60,15 @@ const Visualizer = ({ data }) => {
         );
 
         if (checked) {
-          toast.success("Notification disabled");
-        } else {
           toast.success("Notification enabled.");
+        } else {
+          toast.success("Notification disabled");
         }
       } catch (error) {
         if (checked) {
-          toast.error("Unable disable Notification for this video.");
-        } else {
           toast.error("Unable enable Notification for this video.");
+        } else {
+          toast.error("Unable disable Notification for this video.");
         }
       }
     } else {
@@ -84,19 +86,23 @@ const Visualizer = ({ data }) => {
           }
         );
         if (checked) {
-          toast.success("Notification disabled.");
+          toast.success("Notification enabled");
         } else {
-          toast.success("Notification enabled.");
+          toast.success("Notification disabled");
         }
       } catch (error) {
         console.log(error);
         if (checked) {
-          toast.error("Unable disable Notification for this Blog.");
-        } else {
           toast.error("Unable enable Notification for this Blog.");
+        } else {
+          toast.error("Unable disable Notification for this Blog.");
         }
       }
     }
+  };
+
+  const handleCheckChange = () => {
+    setChecked(!checked);
   };
   //test loading logic [P.S. This is just for testing and will be removed later]
   useEffect(() => {
@@ -215,7 +221,7 @@ const Visualizer = ({ data }) => {
                       control={
                         <NotifSwitch
                           checked={checked}
-                          onChange={handleCheckChange}
+                          onChange={() => handleCheckChange()}
                         />
                       }
                       label="Notification"
