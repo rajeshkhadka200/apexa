@@ -16,7 +16,9 @@ const app = express();
 
 //MiddleWares
 app.use(express.json());
-app.use(cors("Access-Control-Allow-Origin", "*"));
+app.use(cors({
+  origin: "http://localhost:5173",
+}));
 app.use(express.urlencoded({ extended: false }));
 
 connectDB();

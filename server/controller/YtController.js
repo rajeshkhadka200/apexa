@@ -11,7 +11,9 @@ import {
 export const getYtData = async (req, res) => {
   try {
     const { video_id, user_id } = req.body;
-    const ytData = await Yt.findOne({ "user_id": user_id });
+    const ytData = await Yt.findOne({
+      $and: [{ "details.video_id": video_id }, { user_id: user_id }],
+    });
     console.log(ytData);
     const comments = await getComments(video_id);
     const videos = await getVideoData(video_id);
@@ -68,8 +70,29 @@ export const getYtData = async (req, res) => {
         const newDislike = 100 - newLike;
 
         //update the data in DB
+        // const updatedData = await Yt.findOneAndUpdate(
+        //   { "details.video_id": video_id },
+        //   {
+        //     insight: {
+        //       appreciation: newAppreciation,
+        //       hate: newHate,
+        //       neutral: newNeutral,
+        //       spam: newSpam,
+        //       overall: {
+        //         like: newLike,
+        //         dislike: newDislike,
+        //       },
+        //     },
+        //     prevComment: comments.rows.length,
+        //   },
+        //   { new: true }
+        // );
+        //find by user_id and video_id and update
+
         const updatedData = await Yt.findOneAndUpdate(
-          { "user_id": user_id },
+          {
+            $and: [{ "details.video_id": video_id }, { user_id: user_id }],
+          },
           {
             insight: {
               appreciation: newAppreciation,
@@ -101,7 +124,12 @@ export const getYtData = async (req, res) => {
     } else {
       console.log("Processing for new yt video");
       console.log(comments.rows.length);
-      const sentiment = await getSentiment(0, comments.rows, "youtube",user_id);
+      const sentiment = await getSentiment(
+        0,
+        comments.rows,
+        "youtube",
+        user_id
+      );
 
       console.log("The total no. of sentiment: ", sentiment.length);
       console.log(sentiment);
