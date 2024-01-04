@@ -68,27 +68,6 @@ export const getYtData = async (req, res) => {
 
         const newLike = newAppreciation + (100 - newHate - newAppreciation) / 2;
         const newDislike = 100 - newLike;
-
-        //update the data in DB
-        // const updatedData = await Yt.findOneAndUpdate(
-        //   { "details.video_id": video_id },
-        //   {
-        //     insight: {
-        //       appreciation: newAppreciation,
-        //       hate: newHate,
-        //       neutral: newNeutral,
-        //       spam: newSpam,
-        //       overall: {
-        //         like: newLike,
-        //         dislike: newDislike,
-        //       },
-        //     },
-        //     prevComment: comments.rows.length,
-        //   },
-        //   { new: true }
-        // );
-        //find by user_id and video_id and update
-
         const updatedData = await Yt.findOneAndUpdate(
           {
             $and: [{ "details.video_id": video_id }, { user_id: user_id }],

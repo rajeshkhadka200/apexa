@@ -1,1 +1,5 @@
-//  crafting the structure of message
+const message = (user, data) => {
+    
+};
+
+export default message;

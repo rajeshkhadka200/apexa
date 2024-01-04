@@ -5,8 +5,10 @@ const url =
 export const connectDB = async () => {
   try {
     await mongoose.connect(url, {});
-    console.log(`🤖 bot connected to database`);
+    console.log(`🤖 Bot connected to database`);
+    return true;
   } catch (error) {
     console.error(`Error connecting to the database: ${error.message}`);
+    return false;
   }
 };

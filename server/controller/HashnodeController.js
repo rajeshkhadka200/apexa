@@ -73,7 +73,9 @@ export const getBlog = async (req, res) => {
     let title = result.data.publication.post.title;
     let creatorName = result.data.publication.title;
     let coverImage = result.data.publication.post.coverImage.url;
-    const blogData = await Blog.findOne({ user_id: user_id });
+    const blogData = await Blog.findOne({
+      $and: [{ "details.blog_url": blogURL }, { user_id: user_id }],
+    });
     const commentsArray = [];
     comments.forEach((comment) => {
       commentsArray.push({
@@ -128,7 +130,7 @@ export const getBlog = async (req, res) => {
 
         //update the data in DB
         const updatedData = await Blog.findOneAndUpdate(
-          { user_id: user_id },
+          { $and: [{ "details.blog_url": blogURL }, { user_id: user_id }] },
           {
             insights: {
               appreciation: newAppreciation,

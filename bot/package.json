@@ -1,7 +1,7 @@
 {
   "name": "notifier-bot",
   "version": "1.0.0",
-  "description": "this is the bot that tracks the vulger commnets or hate comments done by the specific user in yt or hashnode blogs.",
+  "description": "This is the bot that tracks the vulgar, hate and spam comments done by the specific user in yt or hashnode blogs.",
   "main": "server.js",
   "license": "MIT",
   "type": "module",

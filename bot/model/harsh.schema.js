@@ -4,8 +4,13 @@ const harshSchema = new mongoose.Schema({
   app: {
     type: String,
   },
-  trackedBy: {
-    type: String,
+  tracker: {
+    id: {
+      type: String,
+    },
+    user_id: {
+      type: String,
+    },
   },
   username: {
     type: String,
@@ -13,8 +18,12 @@ const harshSchema = new mongoose.Schema({
   comment: {
     type: String,
   },
+  type:{
+    type: String,
+  },
   status: {
     type: String,
+    default: "pending",
   },
 });
 
