@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <>
       <FirstHero />
-      {/* <Features /> */}
+      <Features />
     </>
   );
 };
