@@ -8,6 +8,7 @@ import Blog from "../model/blog.schema.js";
 
 export const getBlog = async (req, res) => {
   const { blogURL, user_id } = req.body;
+  console.log(blogURL);
   if (blogURL === undefined) {
     return res.status(400).json({
       msg: "We can not process this blog.",

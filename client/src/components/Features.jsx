@@ -12,6 +12,7 @@ const Features = () => {
       slogan:"Analyze Video Comments.",
       c1: "#f96f10",
       c2: "#ef5088",
+      img:"/yt.png",
     },
     {
       icon: <GoFileCode className={style.f_icon} />,
@@ -20,14 +21,16 @@ const Features = () => {
       slogan:"Analyze Blog Comments.",
       c1: "#3093ee",
       c2: "#0ec3fa",
+      img:"/blog.png",
     },
     {
       icon: <GoRocket className={style.f_icon} />,
       tag: "Your Ideas, Our Images!",
       des: "Effortlessly bring your visions to life through image descriptions. Your ideas, our magic a new way to express yourself visually.",
-      slogan:"Generate Awesome Image",
+      slogan:"Generate Image.",
       c1: "#994abe",
       c2: "#8a3ced",
+      img:"/image.png"
     },
     {
       icon: <GoZap className={style.f_icon} />,
@@ -36,6 +39,7 @@ const Features = () => {
       slogan:"Generate Content Ideas.",
       c1: "#00b747",
       c2: "#00acae",
+      img:"/content.png"
     },
   ];
   return (
@@ -51,6 +55,7 @@ const Features = () => {
             c1={data.c1}
             c2={data.c2}
             slogan={data.slogan}
+            img={data.img}
           />
         );
       })}

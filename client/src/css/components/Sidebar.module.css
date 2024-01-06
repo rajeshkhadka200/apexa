@@ -6,7 +6,6 @@
   width: 70px;
   height: fit-content;
   background: rgba(48, 48, 48, 0.2);
-  /* box-shadow: 0 4px 30px rgba(38, 38, 38, 0.1); */
   outline: 2.5px solid var(--grayish);
   border-radius: 100px;
   overflow: hidden;

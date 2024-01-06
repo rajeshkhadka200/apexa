@@ -3,14 +3,25 @@ import style from "../css/components/Features.module.css";
 import { TypeAnimation } from "react-type-animation";
 import { GoCpu, GoFileCode, GoRocket, GoZap } from "react-icons/go";
 
-const FeatureCard = ({ icon, tag, des, img, c1, c2, i, slogan }) => {
+const FeatureCard = ({
+  icon,
+  tag,
+  des,
+  img,
+  c1,
+  c2,
+  i,
+  slogan,
+}) => {
   return (
     <>
       <div className={style.features_container}>
         <div className={style.features_wrapper}>
           {i % 2 === 0 ? (
             <>
-              <div className={style.f_img}></div>
+              <div className={style.f_img}>
+                <img src={img} alt="feature" />
+              </div>
               <div className={style.f_text}>
                 <div
                   className={style.icon_con}
@@ -37,7 +48,7 @@ const FeatureCard = ({ icon, tag, des, img, c1, c2, i, slogan }) => {
                       wrapper="span"
                       speed={10}
                       style={{
-                        fontSize: "2.5rem",
+                        fontSize: "1.8rem",
                         display: "inline-block",
                         fontWeight: "600",
                         color: "#fff",
@@ -79,7 +90,7 @@ const FeatureCard = ({ icon, tag, des, img, c1, c2, i, slogan }) => {
                       wrapper="span"
                       speed={50}
                       style={{
-                        fontSize: "2.5rem",
+                        fontSize: "1.8rem",
                         display: "inline-block",
                         fontWeight: "600",
                         color: "#fff",
@@ -92,7 +103,10 @@ const FeatureCard = ({ icon, tag, des, img, c1, c2, i, slogan }) => {
                   <p className={style.des}>{des}</p>
                 </div>
               </div>
-              <div className={style.f_img}></div>
+              <div className={style.f_img}>
+                {" "}
+                <img src={img} alt="feature" />
+              </div>
             </>
           )}
         </div>

@@ -39,16 +39,9 @@
   line-height: 50px;
 }
 .tag {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 600;
   color: var(--white);
-  /* background: linear-gradient(
-    60deg,
-    var(--gradient-color-1),
-    var(--gradient-color-2)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; */
 }
 .f_des {
   color: var(--gray-text);
@@ -57,10 +50,11 @@
 }
 .f_img {
   width: 55%;
-  height: 100%;
+  height:100%;
   border: 2px solid var(--bg1);
   background-color: var(--grayish);
   border-radius: 8px;
+  overflow: hidden;
 }
 .f_img img {
   height: 100%;
