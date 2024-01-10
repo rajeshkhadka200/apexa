@@ -21,17 +21,17 @@ const Sidebar = () => {
       c: "#3093ee",
     },
     {
-      to: "/app/image",
-      icon: <TbPhotoScan size={30} />,
-      title: "Pic-Sense",
-      c: "#994abe",
-    },
-    {
-      to: "/app/seo",
+      to: "/app/content",
       icon: <MdContentPasteSearch size={30} />,
       title: "Content Predictor",
       c: "#00b747",
     },
+    {
+      to: "/app/image",
+      icon: <TbPhotoScan size={30} />,
+      title: "Pic-Sense",
+      c: "#994abe",
+    }
   ];
   return (
     <>

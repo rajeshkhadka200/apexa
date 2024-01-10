@@ -49,8 +49,8 @@
   font-weight: 400;
 }
 .f_img {
-  width: 55%;
-  height:100%;
+  width:600px;
+  height:400px;
   border: 2px solid var(--bg1);
   background-color: var(--grayish);
   border-radius: 8px;

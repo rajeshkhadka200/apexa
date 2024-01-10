@@ -17,7 +17,7 @@ export default function Router() {
         { path: "yt", element: <Dashboard /> },
         { path: "blog", element: <Blog /> },
         { path: "image", element: <Image /> },
-        { path: "seo", element: <Seo /> },
+        { path: "content", element: <Seo /> },
         { path: "yt/:id", element: <YtDetail /> },
         { path: "blog/:id", element: <BlogDetail /> },
       ],

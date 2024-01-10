@@ -4,5 +4,5 @@ import { connectDB } from "./utils/db.js";
 const dbConnected = await connectDB();
 
 if (dbConnected) {
-  bot();
+  setInterval(bot,10000);
 }
