@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "This is the server side of Apexa AI",
   "scripts": {
-    "start": "node --watch --env-file=config.env index.js"
+    "start": "node --watch --env-file=.env index.js"
   },
   "main": "index.js",
   "type": "module",

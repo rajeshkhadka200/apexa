@@ -77,7 +77,6 @@ web_modules/
 .env.development.local
 .env.test.local
 .env.production.local
-config.env
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -128,8 +127,3 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-
-# dont push config.env file of bot and server folder and .env file of client folder
-client/.env
-server/config.env
-bot/config.env
