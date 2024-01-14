@@ -33,6 +33,14 @@ app.use("/api/hashnode", HashnodeRouter);
 app.use("/api/image", ImageRouter);
 app.use("/api/content", Recomander);
 
+if (process.env.NODE_ENV === "production") {
+  //Set static folder
+  app.use(express.static("../client/dist"));
+  app.get("*", (req, res) => {
+    res.sendFile("/root/apexa/client/dist/index.html"); // absolute path configured for server
+  });
+}
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Server is listening on port ${PORT}`);
