@@ -116,7 +116,7 @@ DROP MODEL content_generator;
 These snippets create models for image generation and content generation using the OpenAI engine. The subsequent ```DROP MODEL``` statements remove the models
 
 
-### 3. AI agents wit mindsdb : 
+### 3. Add ons : 
 
 CREATE KNOWLEDGE BASE command is used to create a knowledge base from an embedding model, and the CREATE SKILL command is used to define specific skills that utilize knowledge bases or other resources for tasks like sentiment analysis or text summarization. The agent is then configured with these skills to enable it to respond intelligently to user input.
 
