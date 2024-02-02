@@ -114,3 +114,41 @@ DROP MODEL content_generator;
 ```
 
 These snippets create models for image generation and content generation using the OpenAI engine. The subsequent ```DROP MODEL``` statements remove the models
+
+
+➕ ### 7. Add ons :
+
+CREATE KNOWLEDGE BASE command is used to create a knowledge base from an embedding model, and the CREATE SKILL command is used to define specific skills that utilize knowledge bases or other resources for tasks like sentiment analysis or text summarization. The agent is then configured with these skills to enable it to respond intelligently to user input.
+
+```yaml
+-- Create an ML Engine for OpenAI
+    CREATE ML_ENGINE openai_engine
+    FROM openai
+    USING
+        api_key = 'sk-.................';
+
+-- Create an embedding model for the knowledge base
+    CREATE MODEL mindsdb.embedding_model
+    PREDICT embeddings
+    USING
+       engine = 'openai_engine',
+       mode='embedding',
+       model_name='text-embedding-ada-002',
+       question_column = 'content';
+
+-- Create a knowledge base using the embedding model
+    CREATE KNOWLEDGE BASE my_knowledge_base
+    USING
+       model = mindsdb.embedding_model;
+
+-- Insert data into the knowledge base
+    INSERT INTO my_knowledge_base (content)
+    VALUES ("I really enjoyed reading about your experiences and lessons learned as a developer. It's clear that you have a passion for this field and a dedication to constantly improving your skills. Keep on coding!");
+
+--  Create a skill for sentiment analysis using the knowledge base
+    CREATE SKILL sentiment_analysis_skill
+    USING
+        type = 'knowledge_base',
+        source = 'my_knowledge_base',
+        description = 'Sentiment Analysis';
+```
