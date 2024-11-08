@@ -33,17 +33,17 @@ body:
       id: no-duplicate-issues
       attributes:
         label: "👀 Have you spent some time to check if this issue has been raised before?"
-      options:
-        - label: "I checked and didn't find similar issue"
-          required: true
+        options:
+          - label: "I checked and didn't find similar issue"
+            required: true
 
     - type: dropdown
       id: willing-to-submit-pr
       attributes:
         label: Are you willing to submit PR?
-      description: This is absolutely not required, but we are happy to guide you in the contribution process.
-      options:
-        - "Yes I am willing to submit a PR!"
-        - "No"
+        description: This is absolutely not required, but we are happy to guide you in the contribution process.
+        options:
+          - "Yes I am willing to submit a PR!"
+          - "No"
       validations:
         required: true
